@@ -1,0 +1,19 @@
+{
+  "name": "gerenciador-de-armazenamento",
+  "version": "1.0.0",
+  "description": "projeto de sistema para gerenciamento de arquivos ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caioalmeida08/gerenciador-de-armazenamento.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caioalmeida08/gerenciador-de-armazenamento/issues"
+  },
+  "homepage": "https://github.com/caioalmeida08/gerenciador-de-armazenamento#readme"
+}
