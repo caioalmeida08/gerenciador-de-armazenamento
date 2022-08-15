@@ -27,11 +27,9 @@ const modo = process.argv[2];
 
 // * Armazena a estrutura da memória física
 class Memoria {
-  constructor(quantidadeBloco, tamanhoBloco) {
+  constructor(quantidadeBloco) {
     // quantidade total de blocos presentes na memoria
     this.quantidadeBloco = quantidadeBloco;
-    // tamanho de cada bloco de memoria
-    this.tamanhoBloco = tamanhoBloco;
     // o disco inicialmente é criado vazio, sem nenhum bloco integrado, e posteriormente populado com a funcao popularBlocos()
     // disco físico da memória
     this.disco = new Array(quantidadeBloco);
@@ -63,7 +61,7 @@ class Memoria {
 
     // armazena os dados de um unico espaco vazio da memoria
     let espaco = {
-      inicio: 0,
+      inicio: undefined,
       tamanho: 0,
     };
 
@@ -71,11 +69,10 @@ class Memoria {
     for (let i = 0; i < this.quantidadeBloco; i++) {
       // representa um bloco da memoria
       let bloco = this.disco[i];
-
       // checa se o bloco está vazio e incrementa o contador
       if (bloco == undefined) {
         // armazena o indice do inicio do espaco
-        if (espaco.inicio == 0) {
+        if (espaco.inicio == undefined) {
           espaco.inicio = i;
         }
         // conta quantos blocos estao disponiveis
@@ -85,7 +82,7 @@ class Memoria {
         espacos.push(espaco);
         // reseta a variavel
         espaco = {
-          inicio: 0,
+          inicio: undefined,
           tamanho: 0,
         };
       }
@@ -121,18 +118,29 @@ class Memoria {
     // incrementa o id do arquivo
     this.idArquivo++;
   }
+
+  // deleta um arquivo da memoria
+  deletarArquivo(idArquivo) {
+    // itera por todos os blocos da memoria
+    for (let i = 0; i < this.quantidadeBloco; i++) {
+      // checa se o bloco está ocupado pelo arquivo desejado
+      if (this.disco[i] == idArquivo) {
+        // esvazia o bloco
+        this.disco[i] = [];
+      }
+    }
+  }
 }
 
 // * Chama a funcao apropriada de acordo com o modo de execucao
 // Caso o modo selecionado seja alocacao contigua
 if (modo == "alocacaoContigua") {
   // instancia uma memoria local, disponivel apenas dentro da funcao alocacao contígua
-  let memoria = new Memoria(8, 1);
-
-  memoria.disco[0] = "A";
+  let memoria = new Memoria(8);
 
   memoria.alocacaoContigua(3);
   memoria.alocacaoContigua(2);
-
+  memoria.alocacaoContigua(2);
+  memoria.deletarArquivo(0);
   console.log(memoria.disco);
 }
