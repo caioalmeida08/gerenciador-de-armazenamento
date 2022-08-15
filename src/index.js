@@ -38,7 +38,7 @@ class Memoria {
     this.idArquivo = 0;
   }
 
-  // checa o espaco disponivel na memoria
+  // * Checa o espaco disponivel na memoria
   checarEspaco() {
     // conta quantos blocos vazios existem
     let contador = 0;
@@ -54,7 +54,7 @@ class Memoria {
     return contador;
   }
 
-  // checa o maior espaco ininterrupto na memoria e retorna o maior deles
+  // * Checa o maior espaco ininterrupto na memoria e retorna o maior deles
   maiorEspacoDisponivel() {
     // armazena os dados referentes aos espacos vazios da memoria
     let espacos = [];
@@ -99,15 +99,21 @@ class Memoria {
   alocacaoContigua(tamanhoArquivo) {
     // checa se a memória é capaz de receber o arquivo
     if (this.maiorEspacoDisponivel().tamanho < tamanhoArquivo) {
-      console.log("Não há espaço suficiente em disco");
+      console.log(
+        "Não há espaço suficiente em disco para alocar o arquivo: ",
+        this.idArquivo,
+        "(",
+        tamanhoArquivo,
+        "blocos)"
+      );
       return;
     }
 
+    // busca onde gravar o arquivo
+    let espaco = this.maiorEspacoDisponivel();
+
     // grava o arquivo no disco
     for (let i = 0; i < tamanhoArquivo; i++) {
-      // busca onde gravar o arquivo
-      let espaco = this.maiorEspacoDisponivel();
-
       // grava o bloco
       this.disco[espaco.inicio] = this.idArquivo;
 
@@ -119,14 +125,14 @@ class Memoria {
     this.idArquivo++;
   }
 
-  // deleta um arquivo da memoria
+  // * Método responsável por deletar um arquivo da memoria
   deletarArquivo(idArquivo) {
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
       // checa se o bloco está ocupado pelo arquivo desejado
       if (this.disco[i] == idArquivo) {
         // esvazia o bloco
-        this.disco[i] = [];
+        this.disco[i] = undefined;
       }
     }
   }
@@ -141,6 +147,16 @@ if (modo == "alocacaoContigua") {
   memoria.alocacaoContigua(3);
   memoria.alocacaoContigua(2);
   memoria.alocacaoContigua(2);
+  console.log(memoria.disco);
   memoria.deletarArquivo(0);
+  console.log(memoria.disco);
+  memoria.alocacaoContigua(2);
+  console.log(memoria.disco);
+  memoria.deletarArquivo(2);
+  console.log(memoria.disco);
+  memoria.alocacaoContigua(3);
+  console.log(memoria.disco);
+  memoria.deletarArquivo(3);
+  memoria.alocacaoContigua(3);
   console.log(memoria.disco);
 }
