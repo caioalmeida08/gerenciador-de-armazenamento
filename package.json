@@ -4,7 +4,8 @@
   "description": "projeto de sistema para gerenciamento de arquivos ",
   "main": "index.js",
   "scripts": {
-    "alocacaoContigua": "node src/index.js alocacaoContigua"
+    "alocacaoContigua": "node src/index.js alocacaoContigua",
+    "alocacaoEncadeada": "node src/index.js alocacaoEncadeada"
   },
   "repository": {
     "type": "git",

@@ -115,6 +115,53 @@ class Memoria {
     this.idArquivo++;
   }
 
+  // * Alocação encadeada
+  alocacaoEncadeada(tamanhoArquivo) {
+    // checa se há espaço suficiente em disco
+    if (this.checarEspaco() < tamanhoArquivo + 1) {
+      console.log(
+        "Não há espaço suficiente em disco para alocar o arquivo: ",
+        this.idArquivo,
+        "(",
+        tamanhoArquivo,
+        "blocos)"
+      );
+      return;
+    }
+
+    // itera pela memoria e armazena os blocos em que serão gravados arquivos
+    let blocoDeIndice = new Array();
+    for (let i = 0; i < this.quantidadeBloco; i++) {
+      // checa se já foram encontrados todos os blocos necessários e finaliza o loop
+      if (blocoDeIndice.length == tamanhoArquivo + 1) {
+        break;
+      }
+
+      // checa se o bloco está vazio
+      if (this.disco[i] == undefined) {
+        // salva o índice do bloco vazio
+        blocoDeIndice.push(i);
+      }
+    }
+
+    // grava os arquivos em disco
+    for (let i = 0; i < blocoDeIndice.length; i++) {
+      if (i == 0) {
+        let temporario = [...blocoDeIndice];
+        temporario.shift();
+        this.disco[blocoDeIndice[i]] = temporario;
+        continue;
+      }
+      this.disco[blocoDeIndice[i]] = {
+        conteudo: this.idArquivo,
+        proximo: blocoDeIndice[i + 1] || undefined,
+      };
+    }
+
+    // incrementa o id do arquivo
+    this.idArquivo++;
+  }
+
   // * Método responsável por deletar um arquivo da memoria
   deletarArquivo(idArquivo) {
     // itera por todos os blocos da memoria
@@ -134,19 +181,8 @@ if (modo == "alocacaoContigua") {
   // instancia uma memoria local, disponivel apenas dentro da funcao alocacao contígua
   let memoria = new Memoria(8);
 
-  memoria.alocacaoContigua(3);
-  memoria.alocacaoContigua(2);
-  memoria.alocacaoContigua(2);
-  console.log(memoria.disco);
-  memoria.deletarArquivo(0);
-  console.log(memoria.disco);
-  memoria.alocacaoContigua(2);
-  console.log(memoria.disco);
-  memoria.deletarArquivo(2);
-  console.log(memoria.disco);
-  memoria.alocacaoContigua(3);
-  console.log(memoria.disco);
-  memoria.deletarArquivo(3);
-  memoria.alocacaoContigua(3);
+  memoria.alocacaoEncadeada(2);
+  memoria.alocacaoEncadeada(3);
+  memoria.alocacaoEncadeada(3);
   console.log(memoria.disco);
 }
