@@ -146,12 +146,14 @@ class Memoria {
 
     // grava os arquivos em disco
     for (let i = 0; i < blocoDeIndice.length; i++) {
+      // salva o bloco de índice na memória
       if (i == 0) {
         let temporario = [...blocoDeIndice];
         temporario.shift();
         this.disco[blocoDeIndice[i]] = temporario;
         continue;
       }
+      // grava o arquivo em disco
       this.disco[blocoDeIndice[i]] = {
         conteudo: this.idArquivo,
         proximo: blocoDeIndice[i + 1] || undefined,
