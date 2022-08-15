@@ -115,8 +115,8 @@ class Memoria {
     this.idArquivo++;
   }
 
-  // * Alocação encadeada
-  alocacaoEncadeada(tamanhoArquivo) {
+  // * Método responsavel pela alocação indexada
+  alocacaoIndexada(tamanhoArquivo) {
     // checa se há espaço suficiente em disco
     if (this.checarEspaco() < tamanhoArquivo + 1) {
       console.log(
@@ -183,8 +183,8 @@ if (modo == "alocacaoContigua") {
   // instancia uma memoria local, disponivel apenas dentro da funcao alocacao contígua
   let memoria = new Memoria(8);
 
-  memoria.alocacaoEncadeada(2);
-  memoria.alocacaoEncadeada(3);
-  memoria.alocacaoEncadeada(3);
+  memoria.alocacaoIndexada(2);
+  memoria.alocacaoIndexada(3);
+  memoria.alocacaoIndexada(3);
   console.log(memoria.disco);
 }
