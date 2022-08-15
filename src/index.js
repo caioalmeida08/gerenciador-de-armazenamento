@@ -15,16 +15,6 @@ function maiorTamanho(a, b) {
 // Detecta o modo de execucao digitado no cmd
 const modo = process.argv[2];
 
-// * Armazena a estrutura de um bloco da memória física
-// class Bloco {
-//   constructor(idBloco, conteudoBloco) {
-//     // identificador do bloco
-//     this.idBloco = idBloco;
-//     // conteudo do bloco
-//     this.conteudoBloco = conteudoBloco;
-//   }
-// }
-
 // * Armazena a estrutura da memória física
 class Memoria {
   constructor(quantidadeBloco) {
