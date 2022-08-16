@@ -77,23 +77,59 @@ class Memoria {
     return espacos[0];
   }
 
-  // * Método responsavel pela alocação contígua
-  alocacaoContigua(tamanhoArquivo) {
-    // checa se a memória é capaz de receber o arquivo
-    if (this.maiorEspacoDisponivel().tamanho < tamanhoArquivo) {
-      throw "Não foi possível gravar o arquivo";
+  // * Método responsavel pela alocação encadeada
+  alocacaoEncadeada(tamanhoArquivo) {
+    // checa se há espaço suficiente em disco
+    if (this.checarEspaco() < tamanhoArquivo) {
+      console.log(
+        "Não há espaço suficiente em disco para alocar o arquivo: ",
+        this.idArquivo,
+        "(",
+        tamanhoArquivo,
+        "blocos)"
+      );
+      return;
     }
 
-    // busca onde gravar o arquivo
-    let espaco = this.maiorEspacoDisponivel();
+    let contadorBlocosGravados = 0;
 
     // grava o arquivo no disco
-    for (let i = 0; i < tamanhoArquivo; i++) {
-      // grava o bloco
-      this.disco[espaco.inicio] = this.idArquivo;
+    for (let i = 0; i < this.quantidadeBloco; i++) {
+      // checa se o arquivo ja foi totalmente gravado
+      if (contadorBlocosGravados == tamanhoArquivo) {
+        break;
+      }
 
-      // itera para o proximo bloco da memoria
-      espaco.inicio++;
+      // checa se o bloco está vazio
+      if (this.disco[i] != undefined) {
+        continue;
+      }
+
+      // grava o arquivo
+      this.disco[i] = {
+        conteudo: this.idArquivo,
+      };
+
+      // armazena o endereço do proximo bloco
+      let proximoBloco = 1;
+
+      for (let j = 0; j < this.quantidadeBloco; j++) {
+        if (this.disco[j] == undefined) {
+          proximoBloco = j;
+          break;
+        }
+      }
+
+      // grava endereço do próximo bloco no bloco atual
+      this.disco[i].proximo = proximoBloco;
+
+      // incrementa o contador de blocos gravados
+      contadorBlocosGravados++;
+
+      // caso seja o ultimo bloco do arquivo, remove o ponteio de proximo
+      if (contadorBlocosGravados == tamanhoArquivo) {
+        this.disco[i].proximo = undefined;
+      }
     }
 
     // incrementa o id do arquivo
@@ -104,11 +140,14 @@ class Memoria {
   deletarArquivo(idArquivo) {
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
-      // bloco de alocacaoContigua
-      // checa se o bloco está ocupado pelo arquivo desejado
-      if (this.disco[i] == idArquivo) {
-        // esvazia o bloco
-        this.disco[i] = undefined;
+      // checa se o bloco está alocado pelo método contíguo ou se pelo metodo encadeado/indexado
+      if (typeof this.disco[i] == "object") {
+        // bloco de alocacaoEncadeada ou AlocacaoIndexada
+        // checa se o bloco está ocupado pelo arquivo desejado
+        if (this.disco[i].conteudo == idArquivo) {
+          // esvazia o bloco
+          this.disco[i] = undefined;
+        }
       }
     }
   }
@@ -120,7 +159,7 @@ let memoria;
 
 //' FUNÇÕES DO CONTROLLER
 
-const alocacaoContigua_get = async (req, res) => {
+const alocacaoEncadeada_get = async (req, res) => {
   try {
     // checa se há um pedido de criação de nova memória
     if (req.query.criar) {
@@ -129,8 +168,8 @@ const alocacaoContigua_get = async (req, res) => {
     }
 
     // aloca um novo arquivo
-    if (req.query.alocacaoContigua) {
-      memoria.alocacaoContigua(req.query.alocacaoContigua);
+    if (req.query.alocacaoEncadeada) {
+      memoria.alocacaoEncadeada(req.query.alocacaoEncadeada);
     }
 
     // deleta um arquivo
@@ -148,5 +187,5 @@ const alocacaoContigua_get = async (req, res) => {
 
 //' LIGAÇÃO COM ROUTER HOME
 module.exports = {
-  alocacaoContigua_get,
+  alocacaoEncadeada_get,
 };
