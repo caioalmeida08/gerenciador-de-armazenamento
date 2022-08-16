@@ -34,10 +34,8 @@ class Memoria {
     let contador = 0;
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
-      // representa um bloco da memoria
-      let bloco = this.disco[i];
       // checa se o bloco está vazio e incrementa o contador
-      if (bloco == undefined) {
+      if (this.disco[i] == undefined) {
         contador++;
       }
     }
@@ -130,10 +128,12 @@ class Memoria {
     }
 
     let contadorBlocosGravados = 0;
+
     // grava o arquivo no disco
     for (let i = 0; i < this.quantidadeBloco; i++) {
       // checa se o arquivo ja foi totalmente gravado
       if (contadorBlocosGravados == tamanhoArquivo) {
+        console.log(this.disco);
         break;
       }
 
@@ -142,21 +142,23 @@ class Memoria {
         continue;
       }
 
+      // grava o arquivo
+      this.disco[i] = {
+        conteudo: this.idArquivo,
+      };
+
       // armazena o endereço do proximo bloco
       let proximoBloco = 1;
 
       for (let j = 0; j < this.quantidadeBloco; j++) {
         if (this.disco[j] == undefined) {
-          proximoBloco = j + 1;
+          proximoBloco = j;
           break;
         }
       }
 
-      // grava o arquivo
-      this.disco[i] = {
-        conteudo: this.idArquivo,
-        proximo: proximoBloco,
-      };
+      // grava endereço do próximo bloco no arquivo
+      this.disco[i].proximo = proximoBloco;
 
       // caso seja o ultimo bloco do arquivo, remove o ponteio de proximo
       if (contadorBlocosGravados + 1 == tamanhoArquivo) {
@@ -224,12 +226,21 @@ class Memoria {
   deletarArquivo(idArquivo) {
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
-      let bloco = this.disco[i];
-
-      // checa se o bloco está ocupado pelo arquivo desejado
-      if (bloco == idArquivo) {
-        // esvazia o bloco
-        bloco = undefined;
+      // checa se o bloco está alocado pelo método contíguo ou se pelo metodo encadeado/indexado
+      if (typeof this.disco[i] != "object") {
+        // bloco de alocacaoContigua
+        // checa se o bloco está ocupado pelo arquivo desejado
+        if (this.disco[i] == idArquivo) {
+          // esvazia o bloco
+          this.disco[i] = undefined;
+        }
+      } else {
+        // bloco de alocacaoEncadeada ou AlocacaoIndexada
+        // checa se o bloco está ocupado pelo arquivo desejado
+        if (this.disco[i].conteudo == idArquivo) {
+          // esvazia o bloco
+          this.disco[i] = undefined;
+        }
       }
     }
   }
@@ -241,8 +252,9 @@ if (modo == "alocacaoContigua") {
   // instancia uma memoria local, disponivel apenas dentro da funcao alocacao contígua
   let memoria = new Memoria(8);
 
-  // memoria.alocacaoEncadeada(2);
+  memoria.alocacaoEncadeada(2);
   memoria.alocacaoEncadeada(3);
   memoria.deletarArquivo(0);
+  memoria.alocacaoEncadeada(3);
   // console.log(memoria.disco);
 }
