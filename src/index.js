@@ -113,7 +113,7 @@ class Memoria {
     this.idArquivo++;
   }
 
-  // * Método responsavel pela alocação indexada
+  // * Método responsavel pela alocação encadeada
   alocacaoEncadeada(tamanhoArquivo) {
     // checa se há espaço suficiente em disco
     if (this.checarEspaco() < tamanhoArquivo) {
@@ -133,7 +133,6 @@ class Memoria {
     for (let i = 0; i < this.quantidadeBloco; i++) {
       // checa se o arquivo ja foi totalmente gravado
       if (contadorBlocosGravados == tamanhoArquivo) {
-        console.log(this.disco);
         break;
       }
 
@@ -157,16 +156,16 @@ class Memoria {
         }
       }
 
-      // grava endereço do próximo bloco no arquivo
+      // grava endereço do próximo bloco no bloco atual
       this.disco[i].proximo = proximoBloco;
-
-      // caso seja o ultimo bloco do arquivo, remove o ponteio de proximo
-      if (contadorBlocosGravados + 1 == tamanhoArquivo) {
-        this.disco[i].proximo = undefined;
-      }
 
       // incrementa o contador de blocos gravados
       contadorBlocosGravados++;
+
+      // caso seja o ultimo bloco do arquivo, remove o ponteio de proximo
+      if (contadorBlocosGravados == tamanhoArquivo) {
+        this.disco[i].proximo = undefined;
+      }
     }
 
     // incrementa o id do arquivo
@@ -251,10 +250,14 @@ class Memoria {
 if (modo == "alocacaoContigua") {
   // instancia uma memoria local, disponivel apenas dentro da funcao alocacao contígua
   let memoria = new Memoria(8);
-
-  memoria.alocacaoEncadeada(2);
-  memoria.alocacaoEncadeada(3);
-  memoria.deletarArquivo(0);
-  memoria.alocacaoEncadeada(3);
-  // console.log(memoria.disco);
+}
+// Caso o modo selecionado seja alocacao encadeada
+if (modo == "alocacaoEncadeada") {
+  // instancia uma memoria local, disponivel apenas dentro da funcao alocacao encadeada
+  let memoria = new Memoria(8);
+}
+// Caso o modo selecionado seja alocacao indexada
+if (modo == "alocacaoIndexada") {
+  // instancia uma memoria local, disponivel apenas dentro da funcao alocacao indexada
+  let memoria = new Memoria(8);
 }
