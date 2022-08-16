@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/caioalmeida08/gerenciador-de-armazenamento/issues"
   },
-  "homepage": "https://github.com/caioalmeida08/gerenciador-de-armazenamento#readme"
+  "homepage": "https://github.com/caioalmeida08/gerenciador-de-armazenamento#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
 }
