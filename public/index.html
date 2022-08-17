@@ -10,6 +10,76 @@
 
 <body>
     MAKONHA
+    <form action="/alocacaoContigua" method="get" id="alocacaoContigua">
+        <h1>Alocacao Contígua</h1>
+        <label for="criar">Criar um novo disco de memória</label>
+        <input type="number" name="ac_criar" placeholder="tamanho do disco" value="32"></input>
+        <input type="submit" id="ac_criar_button"></input>
+        <label for="criar">Criar um novo arquivo</label>
+        <input type="number" name="ac_alocacaoContigua" placeholder="tamanho do arquivo" value="0"></input>
+        <input type="submit" id="ac_alocacaoContigua_button"></input>
+        <label for="criar">Deletar um arquivo</label>
+        <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
+        <input type="submit" id="ac_deletarArquivo_button"></input>
+    </form>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#ac_criar_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            criar: $("input[name='ac_criar']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoContigua", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível criar a memória";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+    $("#ac_alocacaoContigua_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            alocacaoContigua: $("input[name='ac_alocacaoContigua']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoContigua", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível criar este arquivo";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+    $("#ac_deletarArquivo_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            deletarArquivo: $("input[name='ac_deletarArquivo']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoContigua", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível deletar este arquivo";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+</script>
 
 </html>

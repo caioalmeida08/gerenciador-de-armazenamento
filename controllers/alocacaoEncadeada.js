@@ -38,52 +38,11 @@ class Memoria {
     return contador;
   }
 
-  // * Checa o maior espaco ininterrupto na memoria e retorna o maior deles
-  maiorEspacoDisponivel() {
-    // armazena os dados referentes aos espacos vazios da memoria
-    let espacos = [];
-
-    // armazena os dados de um unico espaco vazio da memoria
-    let espaco = {
-      inicio: undefined,
-      tamanho: 0,
-    };
-
-    // itera por todos os blocos da memoria
-    for (let i = 0; i < this.quantidadeBloco; i++) {
-      // checa se o bloco está vazio e incrementa o contador
-      if (this.disco[i] == undefined) {
-        // armazena o indice do inicio do espaco
-        if (espaco.inicio == undefined) {
-          espaco.inicio = i;
-        }
-        // conta quantos blocos estao disponiveis
-        espaco.tamanho++;
-      } else {
-        // armazena o espaco vazio e seus dados
-        espacos.push(espaco);
-        // reseta a variavel
-        espaco = {
-          inicio: undefined,
-          tamanho: 0,
-        };
-      }
-    }
-    espacos.push(espaco);
-
-    // filtra o array espacos com base no tamanho de cada espaco, resultado em ordem decrescente
-    espacos.sort(maiorTamanho);
-
-    return espacos[0];
-  }
-
   // * Método responsavel pela alocação encadeada
   alocacaoEncadeada(tamanhoArquivo) {
     // checa se há espaço suficiente em disco
     if (this.checarEspaco() < tamanhoArquivo) {
-      if (this.maiorEspacoDisponivel().tamanho < tamanhoArquivo) {
-        throw "Não foi possível gravar o arquivo";
-      }
+      throw "Não foi possível gravar o arquivo";
     }
 
     let contadorBlocosGravados = 0;

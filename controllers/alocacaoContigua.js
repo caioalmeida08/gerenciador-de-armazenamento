@@ -38,8 +38,8 @@ class Memoria {
     return contador;
   }
 
-  // * Checa o maior espaco ininterrupto na memoria e retorna o maior deles
-  maiorEspacoDisponivel() {
+  // * Checa o primeiro espaco ininterrupto na memoria e retorna o maior deles
+  primeiroEspacoDisponivel(tamanhoArquivo) {
     // armazena os dados referentes aos espacos vazios da memoria
     let espacos = [];
 
@@ -51,7 +51,10 @@ class Memoria {
 
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
-      // checa se o bloco está vazio e incrementa o contador
+      // checa se o espaço já é suficiente
+      if (espaco.tamanho == tamanhoArquivo) {
+        break;
+      }
       if (this.disco[i] == undefined) {
         // armazena o indice do inicio do espaco
         if (espaco.inicio == undefined) {
@@ -80,12 +83,14 @@ class Memoria {
   // * Método responsavel pela alocação contígua
   alocacaoContigua(tamanhoArquivo) {
     // checa se a memória é capaz de receber o arquivo
-    if (this.maiorEspacoDisponivel().tamanho < tamanhoArquivo) {
+    if (
+      this.primeiroEspacoDisponivel(tamanhoArquivo).tamanho < tamanhoArquivo
+    ) {
       throw "Não foi possível gravar o arquivo";
     }
 
     // busca onde gravar o arquivo
-    let espaco = this.maiorEspacoDisponivel();
+    let espaco = this.primeiroEspacoDisponivel(tamanhoArquivo);
 
     // grava o arquivo no disco
     for (let i = 0; i < tamanhoArquivo; i++) {
