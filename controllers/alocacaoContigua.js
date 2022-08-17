@@ -86,7 +86,7 @@ class Memoria {
     if (
       this.primeiroEspacoDisponivel(tamanhoArquivo).tamanho < tamanhoArquivo
     ) {
-      throw "Não foi possível gravar o arquivo";
+      throw "Não foi possível gravar o arquivo, espaço insuficiente";
     }
 
     // busca onde gravar o arquivo
@@ -107,6 +107,8 @@ class Memoria {
 
   // * Método responsável por deletar um arquivo da memoria
   deletarArquivo(idArquivo) {
+    let contador = 0;
+
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
       // bloco de alocacaoContigua
@@ -114,7 +116,13 @@ class Memoria {
       if (this.disco[i] == idArquivo) {
         // esvazia o bloco
         this.disco[i] = undefined;
+        contador++;
       }
+    }
+
+    // checa se o arquivo existia na memoria
+    if (contador == 0) {
+      throw "Esse arquivo não existe na memória";
     }
   }
 }
@@ -132,6 +140,10 @@ const alocacaoContigua_get = async (req, res) => {
       // cria uma nova memória
       memoria = new Memoria(req.query.criar);
     }
+    // checa se a memória já foi criada
+    if (memoria == undefined) {
+      throw "Memória não iniciada";
+    }
 
     // aloca um novo arquivo
     if (req.query.alocacaoContigua) {
@@ -145,9 +157,7 @@ const alocacaoContigua_get = async (req, res) => {
 
     res.json(memoria);
   } catch (err) {
-    res.json({
-      erro: err.message,
-    });
+    res.status(500).json(err);
   }
 };
 
