@@ -22,6 +22,30 @@
         <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
         <input type="submit" id="ac_deletarArquivo_button"></input>
     </form>
+    <form action="/alocacaoEncadeada" method="get" id="alocacaoEncadeada">
+        <h1>Alocacao Encadeada</h1>
+        <label for="criar">Criar um novo disco de memória</label>
+        <input type="number" name="ae_criar" placeholder="tamanho do disco" value="32"></input>
+        <input type="submit" id="ae_criar_button"></input>
+        <label for="criar">Criar um novo arquivo</label>
+        <input type="number" name="ae_alocacaoEncadeada" placeholder="tamanho do arquivo" value="0"></input>
+        <input type="submit" id="ae_alocacaoEncadeada_button"></input>
+        <label for="criar">Deletar um arquivo</label>
+        <input type="number" name="ae_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
+        <input type="submit" id="ae_deletarArquivo_button"></input>
+    </form>
+    <form action="/alocacaoIndexada" method="get" id="alocacaoIndexada">
+        <h1>Alocacao Indexada</h1>
+        <label for="criar">Criar um novo disco de memória</label>
+        <input type="number" name="ai_criar" placeholder="tamanho do disco" value="32"></input>
+        <input type="submit" id="ai_criar_button"></input>
+        <label for="criar">Criar um novo arquivo</label>
+        <input type="number" name="ai_alocacaoIndexada" placeholder="tamanho do arquivo" value="0"></input>
+        <input type="submit" id="ai_alocacaoIndexada_button"></input>
+        <label for="criar">Deletar um arquivo</label>
+        <input type="number" name="ai_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
+        <input type="submit" id="ai_deletarArquivo_button"></input>
+    </form>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -71,6 +95,114 @@
 
         try {
             const response = await $.get("/alocacaoContigua", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível deletar este arquivo";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+    $("#ae_criar_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            criar: $("input[name='ae_criar']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoEncadeada", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível criar a memória";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+    $("#ae_alocacaoEncadeada_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            alocacaoEncadeada: $("input[name='ae_alocacaoEncadeada']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoEncadeada", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível criar este arquivo";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+    $("#ae_deletarArquivo_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            deletarArquivo: $("input[name='ae_deletarArquivo']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoEncadeada", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível deletar este arquivo";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+    $("#ai_criar_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            criar: $("input[name='ai_criar']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoIndexada", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível criar a memória";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+    $("#ai_alocacaoIndexada_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            alocacaoIndexada: $("input[name='ai_alocacaoIndexada']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoIndexada", form);
+            if (jQuery.isEmptyObject(response)) {
+                throw "não foi possível criar este arquivo";
+            }
+            $("form").trigger("reset");
+            console.log(response)
+        } catch (error) {
+            console.log("erro ", error)
+        }
+    });
+    $("#ai_deletarArquivo_button").on("click", async (e) => {
+        e.preventDefault();
+
+        let form = {
+            deletarArquivo: $("input[name='ai_deletarArquivo']").val(),
+        };
+
+        try {
+            const response = await $.get("/alocacaoIndexada", form);
             if (jQuery.isEmptyObject(response)) {
                 throw "não foi possível deletar este arquivo";
             }

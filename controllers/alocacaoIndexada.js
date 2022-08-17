@@ -1,16 +1,3 @@
-//' API
-// * Funções utilitarias
-// filtro da funcao .sort() que ordena um array de objetos com base na propriedade tamanho
-function maiorTamanho(a, b) {
-  if (a.tamanho > b.tamanho) {
-    return -1;
-  }
-  if (a.tamanho < b.tamanho) {
-    return 1;
-  }
-  return 0;
-}
-
 // * Armazena a estrutura da memória física
 class Memoria {
   constructor(quantidadeBloco) {
@@ -41,10 +28,8 @@ class Memoria {
   // * Método responsavel pela alocação encadeada
   alocacaoIndexada(tamanhoArquivo) {
     // checa se há espaço suficiente em disco
-    if (this.checarEspaco() < tamanhoArquivo + 1) {
-      if (this.maiorEspacoDisponivel().tamanho < tamanhoArquivo) {
-        throw "Não foi possível gravar o arquivo";
-      }
+    if (this.checarEspaco() - 1 < tamanhoArquivo) {
+      throw "Não foi possível gravar o arquivo";
     }
 
     // itera pela memoria e armazena os blocos em que serão gravados arquivos
@@ -129,6 +114,8 @@ const alocacaoIndexada_get = async (req, res) => {
 
     res.json(memoria);
   } catch (err) {
+    console.log(err);
+
     res.json({
       erro: err.message,
     });

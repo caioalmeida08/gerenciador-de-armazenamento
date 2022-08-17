@@ -4,7 +4,7 @@ const express = require("express");
 
 //' CONTROLADORES
 
-const alocacaoIndexada = require("../controllers/alocacaoIndexada.js");
+const alocacaoEncadeada = require("../controllers/alocacaoEncadeada.js");
 
 // ' VARIÁVEIS
 
@@ -12,7 +12,7 @@ const router = express.Router();
 
 // ' ROUTING
 
-router.get("/", alocacaoIndexada.alocacaoIndexada_get);
+router.get("/", alocacaoEncadeada.alocacaoEncadeada_get);
 
 //' LIGAÇÃO COM APP
 
