@@ -8,13 +8,13 @@ $("#ae_criar_button").on("click", async (e) => {
 
   try {
     const response = await $.get("/alocacaoEncadeada", form);
-    if (jQuery.isEmptyObject(response)) {
-      throw "não foi possível criar a memória";
-    }
     $("form").trigger("reset");
+    if (jQuery.isEmptyObject(response)) {
+      throw response;
+    }
     console.log(response);
   } catch (error) {
-    console.log("erro ", error);
+    console.log(error.responseText);
   }
 });
 // Função utilizada para comunicar a criação de um novo arquivo
@@ -26,19 +26,19 @@ $("#ae_alocacaoEncadeada_button").on("click", async (e) => {
   };
 
   try {
+    $("form").trigger("reset");
     // checa se o arquivo tem o tamanho mínimo
     if (form.alocacaoEncadeada < 1) {
-      throw "tamanho de arquivo mínimo não atingido";
+      throw "Tamanho de arquivo mínimo não atingido";
     }
 
     const response = await $.get("/alocacaoEncadeada", form);
     if (jQuery.isEmptyObject(response)) {
-      throw "não foi possível criar este arquivo";
+      throw response;
     }
-    $("form").trigger("reset");
     console.log(response);
   } catch (error) {
-    console.log("erro ", error);
+    console.log(error);
   }
 });
 // Função utilizada para comunicar a deleção de um arquivo
@@ -50,13 +50,13 @@ $("#ae_deletarArquivo_button").on("click", async (e) => {
   };
 
   try {
+    $("form").trigger("reset");
     const response = await $.get("/alocacaoEncadeada", form);
     if (jQuery.isEmptyObject(response)) {
-      throw "não foi possível deletar este arquivo";
+      throw response;
     }
-    $("form").trigger("reset");
     console.log(response);
   } catch (error) {
-    console.log("erro ", error);
+    console.log(error.responseText);
   }
 });

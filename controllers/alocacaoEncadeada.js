@@ -1,16 +1,3 @@
-//' API
-// * Funções utilitarias
-// filtro da funcao .sort() que ordena um array de objetos com base na propriedade tamanho
-function maiorTamanho(a, b) {
-  if (a.tamanho > b.tamanho) {
-    return -1;
-  }
-  if (a.tamanho < b.tamanho) {
-    return 1;
-  }
-  return 0;
-}
-
 // * Armazena a estrutura da memória física
 class Memoria {
   constructor(quantidadeBloco) {
@@ -92,6 +79,24 @@ class Memoria {
 
   // * Método responsável por deletar um arquivo da memoria
   deletarArquivo(idArquivo) {
+    // checa se o arquivo existe na memoria
+    let existe = false;
+    for (let i = 0; i < this.quantidadeBloco; i++) {
+      if (typeof this.disco[i] != "object") {
+        continue;
+      }
+
+      if (this.disco[i].conteudo == idArquivo) {
+        existe = true;
+        break;
+      }
+    }
+
+    // emite erro caso o arquivo nao exista
+    if (!existe) {
+      throw "Esse arquivo não existe na memória";
+    }
+
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
       // checa se o bloco está alocado pelo método contíguo ou se pelo metodo encadeado/indexado
@@ -100,7 +105,9 @@ class Memoria {
         // checa se o bloco está ocupado pelo arquivo desejado
         if (this.disco[i].conteudo == idArquivo) {
           // esvazia o bloco
-          this.disco[i] = undefined;
+          this.disco[i] = {
+            conteudo: undefined,
+          };
         }
       }
     }
@@ -113,12 +120,17 @@ let memoria;
 
 //' FUNÇÕES DO CONTROLLER
 
-const alocacaoEncadeada_get = async (req, res) => {
+const alocacaoEncadeada_get = (req, res) => {
   try {
     // checa se há um pedido de criação de nova memória
     if (req.query.criar) {
       // cria uma nova memória
       memoria = new Memoria(req.query.criar);
+    }
+
+    // checa se a memória já foi criada
+    if (memoria == undefined) {
+      throw "Memória não iniciada";
     }
 
     // aloca um novo arquivo
@@ -133,9 +145,7 @@ const alocacaoEncadeada_get = async (req, res) => {
 
     res.json(memoria);
   } catch (err) {
-    res.json({
-      erro: err.message,
-    });
+    res.status(500).end(err);
   }
 };
 

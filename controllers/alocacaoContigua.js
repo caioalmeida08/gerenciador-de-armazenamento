@@ -107,7 +107,18 @@ class Memoria {
 
   // * Método responsável por deletar um arquivo da memoria
   deletarArquivo(idArquivo) {
-    let contador = 0;
+    // checa se o arquivo existe na memoria
+    let existe = false;
+    for (let i = 0; i < this.quantidadeBloco; i++) {
+      if (this.disco[i] == idArquivo) {
+        existe = true;
+        break;
+      }
+    }
+    // emite erro caso o arquivo nao exista
+    if (!existe) {
+      throw "Esse arquivo não existe na memória";
+    }
 
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
@@ -116,13 +127,7 @@ class Memoria {
       if (this.disco[i] == idArquivo) {
         // esvazia o bloco
         this.disco[i] = undefined;
-        contador++;
       }
-    }
-
-    // checa se o arquivo existia na memoria
-    if (contador == 0) {
-      throw "Esse arquivo não existe na memória";
     }
   }
 }
@@ -157,7 +162,7 @@ const alocacaoContigua_get = async (req, res) => {
 
     res.json(memoria);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).end(err);
   }
 };
 
