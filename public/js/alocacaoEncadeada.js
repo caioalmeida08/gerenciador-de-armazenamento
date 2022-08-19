@@ -38,7 +38,7 @@ $("#ae_alocacaoEncadeada_button").on("click", async (e) => {
     }
     console.log(response);
   } catch (error) {
-    console.log(error);
+    console.log(error.responseText);
   }
 });
 // Função utilizada para comunicar a deleção de um arquivo

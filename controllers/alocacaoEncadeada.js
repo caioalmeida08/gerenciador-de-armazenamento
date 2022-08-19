@@ -124,6 +124,10 @@ const alocacaoEncadeada_get = (req, res) => {
   try {
     // checa se há um pedido de criação de nova memória
     if (req.query.criar) {
+      // checa se a memória tem o espaço mínimo de 1
+      if (req.query.criar < 1) {
+        throw "Espaço mínimo da memória não atingido";
+      }
       // cria uma nova memória
       memoria = new Memoria(req.query.criar);
     }

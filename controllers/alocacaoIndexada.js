@@ -57,10 +57,7 @@ class Memoria {
         continue;
       }
       // grava o arquivo em disco
-      this.disco[blocoDeIndice[i]] = {
-        conteudo: this.idArquivo,
-        proximo: blocoDeIndice[i + 1] || undefined,
-      };
+      this.disco[blocoDeIndice[i]] = this.idArquivo;
     }
 
     // incrementa o id do arquivo
@@ -116,6 +113,10 @@ const alocacaoIndexada_get = async (req, res) => {
   try {
     // checa se há um pedido de criação de nova memória
     if (req.query.criar) {
+      // checa se a memória tem o espaço mínimo de 1
+      if (req.query.criar < 1) {
+        throw "Espaço mínimo da memória não atingido";
+      }
       // cria uma nova memória
       memoria = new Memoria(req.query.criar);
     }
