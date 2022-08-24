@@ -1,6 +1,22 @@
 #home {
-	background: #6812E6;
+	background: #Ecf0f1;
 	color: white;
+
+}
+
+#home h1 {
+
+	color: #2c3e50;
+}
+
+#home p {
+
+	color: #34495e;
+}
+
+#display{
+
+	font-weight: bold;
 }
 
 .caixa{
@@ -14,7 +30,7 @@ footer p a {
 
 nav.navbar.navbar-expand-sm.navbar-light.fundo-navbar{
 
-	background-color: #5663C7;
+	background-color: #8e44ad;
 
 
 }
