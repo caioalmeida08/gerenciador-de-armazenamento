@@ -1,0 +1,55 @@
+#home {
+	background: #6812E6;
+	color: white;
+}
+
+.caixa{
+	padding: 60px 0;
+}
+
+footer p a {
+
+	margin: 5px 15px;
+}
+
+nav.navbar.navbar-expand-sm.navbar-light.fundo-navbar{
+
+	background-color: #5663C7;
+
+
+}
+
+footer{
+ 	background: #5663C7;
+ 	padding: 50px 0px 20px 0px;
+ 	position: relative;
+ }
+
+ footer h4{
+
+ 	color: #E69A1E;
+ 	font-size: 0.8em;
+ 	text-transform: uppercase;
+ }
+
+ footer .navbar-nav a{
+
+ 	color: white;
+ 	font-size: 0.8em;
+ }
+
+ footer .navbar-nav a:hover{
+
+ 	color: #E6D41E;
+ 	text-decoration: none;
+ }
+ footer ul{
+
+ 	list-style: none;
+ }
+
+  footer ul li{
+
+ 	float: right;
+ 	margin: 0 5px;
+ }
