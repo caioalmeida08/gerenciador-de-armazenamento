@@ -97,6 +97,15 @@ footer{
  .animacao-imagem:hover{
 
 	transform: scale(1.2);
+	
+	 
+ }
+
+ .animacao-card{
+
+	transition: 1s;
+	transition-timing-function: ease-in;
+
  }
 
  
