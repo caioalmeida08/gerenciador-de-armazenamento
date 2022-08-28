@@ -82,6 +82,10 @@ class Memoria {
 
   // * Método responsavel pela alocação contígua
   alocacaoContigua(tamanhoArquivo) {
+    // checa se o arquivo tem o tamanho mínimo necessário
+    if (tamanhoArquivo <= 0) {
+      throw "O arquivo precisa ter no mínimo 1 bloco de tamanho";
+    }
     // checa se a memória é capaz de receber o arquivo
     if (
       this.primeiroEspacoDisponivel(tamanhoArquivo).tamanho < tamanhoArquivo
@@ -151,7 +155,7 @@ const alocacaoContigua_get = async (req, res) => {
     }
     // checa se a memória já foi criada
     if (memoria == undefined) {
-      throw "Memória não iniciada";
+      throw "Defina o tamanho da memória antes de utilizá-la";
     }
 
     // aloca um novo arquivo
@@ -164,6 +168,7 @@ const alocacaoContigua_get = async (req, res) => {
       memoria.deletarArquivo(req.query.deletarArquivo);
     }
 
+    console.log(memoria);
     res.json(memoria);
   } catch (err) {
     res.status(500).end(err);
