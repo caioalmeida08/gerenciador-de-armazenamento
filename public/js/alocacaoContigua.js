@@ -1,9 +1,6 @@
 $(() => {
   // Função utilizada para comunicar a criação de uma nova memória
   $("#ac_criar_button").on("click", async (e) => {
-    // previne o formulario de recarregar a pagina
-    e.preventDefault();
-
     // coleta os dados do input
     let form = {
       criar: $("input[name='ac_criar']").val(),
@@ -15,13 +12,12 @@ $(() => {
       // tenta renderizar a resposta
       renderizar(response);
     } catch (error) {
-      console.log(error.responseText || error);
+      mostrarErro(error);
     }
   });
   // Função utilizada para comunicar a criação de um novo arquivo
   $("#ac_alocacaoContigua_button").on("click", async (e) => {
-    e.preventDefault();
-
+    // coleta os dados do input
     let form = {
       alocacaoContigua: $("input[name='ac_alocacaoContigua']").val(),
     };
@@ -32,13 +28,11 @@ $(() => {
       // tenta renderizar a resposta
       renderizar(response);
     } catch (error) {
-      console.log(error.responseText || error);
+      mostrarErro(error);
     }
   });
   // Função utilizada para comunicar a deleção de um arquivo
   $("#ac_deletarArquivo_button").on("click", async (e) => {
-    e.preventDefault();
-
     let form = {
       deletarArquivo: $("input[name='ac_deletarArquivo']").val(),
     };
@@ -49,7 +43,7 @@ $(() => {
       // tenta renderizar a resposta
       renderizar(response);
     } catch (error) {
-      console.log(error.responseText || error);
+      mostrarErro(error);
     }
   });
 });
@@ -57,7 +51,7 @@ $(() => {
 // tenta enviar os dados ao back-end
 let enviar = async (form) => {
   const response = await $.get("/alocacaoContigua", form);
-  if (jQuery.isEmptyObject(response)) {
+  if (jQuery.isEmptyObject(response) || response.error != undefined) {
     throw response;
   }
   return response;
@@ -65,6 +59,10 @@ let enviar = async (form) => {
 
 // renderiza a tabela
 let renderizar = (response) => {
+  // armazena a cor do arquivo
+  let cor;
+  // utilizado para detectar mudança de arquivos durante a renderização
+  let ultimoArquivo;
   // deleta o conteudo da ta bela
   let tbody = document.getElementById("ac-tbody");
   tbody.innerHTML = "";
@@ -79,9 +77,18 @@ let renderizar = (response) => {
       response.disco[i] == undefined
         ? "<i><small>Vazio</small></i>"
         : response.disco[i];
+
     let linha = document.createElement("tr");
     linha.appendChild(numeroLinha);
     linha.appendChild(conteudoLinha);
     tbody.appendChild(linha);
   }
+  // apaga mensagens de erro antigas
+  mostrarErro();
+};
+
+// mostra erros que ocorreram
+let mostrarErro = (erro) => {
+  let caixaDeErro = document.getElementById("caixaDeErro");
+  caixaDeErro.innerHTML = erro.error || erro.responseText || "";
 };

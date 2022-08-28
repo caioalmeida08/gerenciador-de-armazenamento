@@ -21,20 +21,20 @@
 <body>
 
 
-  <form id="alocacaoContigua">
-    <h1>Alocacao Contígua</h1>
-    <label for="criar">Criar um novo disco de memória</label>
-    <input type="number" name="ac_criar" placeholder="tamanho do disco" value="32"></input>
-    <input type="submit" id="ac_criar_button"></input>
-    <label for="criar">Criar um novo arquivo</label>
-    <input type="number" name="ac_alocacaoContigua" placeholder="tamanho do arquivo" value="0"></input>
-    <input type="submit" id="ac_alocacaoContigua_button"></input>
-    <label for="criar">Deletar um arquivo</label>
-    <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
-    <input type="submit" id="ac_deletarArquivo_button"></input>
-  </form>
+  <h1>Alocacao Contígua</h1>
+  <label for="criar">Criar um novo disco de memória</label>
+  <input type="number" name="ac_criar" placeholder="tamanho do disco" value="32"></input>
+  <input type="submit" id="ac_criar_button"></input>
+  <label for="criar">Criar um novo arquivo</label>
+  <input type="number" name="ac_alocacaoContigua" placeholder="tamanho do arquivo" value="0"></input>
+  <input type="submit" id="ac_alocacaoContigua_button"></input>
+  <label for="criar">Deletar um arquivo</label>
+  <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
+  <input type="submit" id="ac_deletarArquivo_button"></input>
 
-  <table class="table" id="ac-tabela">
+  <div class="text-danger" id="caixaDeErro"></div>
+
+  <table class="table col-sm-6" id="ac-tabela">
     <thead>
       <tr>
         <th scope="col">Bloco da memória</th>

@@ -11,6 +11,21 @@ function maiorTamanho(a, b) {
   return 0;
 }
 
+// retorna uma cor hexadecimal aleatoria
+let corAleatoria = () => {
+  let possibilidades = "123456789ABCDEF";
+  let hexadecimal = new Array();
+
+  for (let i = 0; i < 6; i++) {
+    let num = Math.round(Math.random() * 14);
+    hexadecimal.push(possibilidades[num]);
+  }
+
+  hexadecimal.unshift("#");
+
+  return hexadecimal.join("");
+};
+
 // * Armazena a estrutura da memória física
 class Memoria {
   constructor(quantidadeBloco) {
@@ -19,7 +34,8 @@ class Memoria {
     // o disco inicialmente é criado vazio, sem nenhum bloco integrado, e posteriormente populado com a funcao popularBlocos()
     // disco físico da memória
     this.disco = new Array();
-
+    // cor que será utilizada para representar o arquivo no documento html
+    this.cor = corAleatoria();
     // armazena em memoria o nome (id) do ultimo arquivo gravado em disco
     this.idArquivo = 0;
   }
@@ -90,7 +106,7 @@ class Memoria {
     if (
       this.primeiroEspacoDisponivel(tamanhoArquivo).tamanho < tamanhoArquivo
     ) {
-      throw "Não foi possível gravar o arquivo, espaço insuficiente";
+      throw "Não é possível gravar o arquivo, espaço insuficiente";
     }
 
     // busca onde gravar o arquivo
@@ -153,6 +169,7 @@ const alocacaoContigua_get = async (req, res) => {
       // cria uma nova memória
       memoria = new Memoria(req.query.criar);
     }
+
     // checa se a memória já foi criada
     if (memoria == undefined) {
       throw "Defina o tamanho da memória antes de utilizá-la";
@@ -168,10 +185,11 @@ const alocacaoContigua_get = async (req, res) => {
       memoria.deletarArquivo(req.query.deletarArquivo);
     }
 
-    console.log(memoria);
     res.json(memoria);
   } catch (err) {
-    res.status(500).end(err);
+    res.json({
+      error: err,
+    });
   }
 };
 
