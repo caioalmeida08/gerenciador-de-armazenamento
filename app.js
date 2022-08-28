@@ -15,6 +15,7 @@ const http = require("http").Server(app);
 
 //' ACESSO À PASTA PUBLIC
 
+app.set("view-engine", "html");
 app.use(express.static("public"));
 
 //' CODIFICAÇÃO DO METODO POST
