@@ -11,21 +11,6 @@ function maiorTamanho(a, b) {
   return 0;
 }
 
-// retorna uma cor hexadecimal aleatoria
-let corAleatoria = () => {
-  let possibilidades = "123456789ABCDEF";
-  let hexadecimal = new Array();
-
-  for (let i = 0; i < 6; i++) {
-    let num = Math.round(Math.random() * 14);
-    hexadecimal.push(possibilidades[num]);
-  }
-
-  hexadecimal.unshift("#");
-
-  return hexadecimal.join("");
-};
-
 // * Armazena a estrutura da memória física
 class Memoria {
   constructor(quantidadeBloco) {
@@ -34,8 +19,6 @@ class Memoria {
     // o disco inicialmente é criado vazio, sem nenhum bloco integrado, e posteriormente populado com a funcao popularBlocos()
     // disco físico da memória
     this.disco = new Array();
-    // cor que será utilizada para representar o arquivo no documento html
-    this.cor = corAleatoria();
     // armazena em memoria o nome (id) do ultimo arquivo gravado em disco
     this.idArquivo = 0;
   }

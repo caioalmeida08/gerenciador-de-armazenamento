@@ -1,4 +1,6 @@
 $(() => {
+  // armazena as cores dos arquivos
+
   // Função utilizada para comunicar a criação de uma nova memória
   $("#ac_criar_button").on("click", async (e) => {
     // coleta os dados do input
@@ -58,11 +60,10 @@ let enviar = async (form) => {
 };
 
 // renderiza a tabela
+let cores = new Array();
 let renderizar = (response) => {
-  // armazena a cor do arquivo
-  let cor;
-  // utilizado para detectar mudança de arquivos durante a renderização
-  let ultimoArquivo;
+  cores.push(corAleatoria());
+
   // deleta o conteudo da ta bela
   let tbody = document.getElementById("ac-tbody");
   tbody.innerHTML = "";
@@ -77,7 +78,8 @@ let renderizar = (response) => {
       response.disco[i] == undefined
         ? "<i><small>Vazio</small></i>"
         : response.disco[i];
-
+    conteudoLinha.idArquivo = response.disco[i];
+    conteudoLinha.style.borderRight = cores[response.disco[i]] + " 10px solid";
     let linha = document.createElement("tr");
     linha.appendChild(numeroLinha);
     linha.appendChild(conteudoLinha);
@@ -91,4 +93,16 @@ let renderizar = (response) => {
 let mostrarErro = (erro) => {
   let caixaDeErro = document.getElementById("caixaDeErro");
   caixaDeErro.innerHTML = erro.error || erro.responseText || "";
+};
+
+let corAleatoria = () => {
+  let possibilidades = "123456789ABCDEF";
+  let hexadecimal = new Array();
+
+  for (let i = 0; i < 6; i++) {
+    hexadecimal.push(possibilidades[Math.round(Math.random() * 14)]);
+  }
+
+  hexadecimal.unshift("#");
+  return hexadecimal.join("");
 };
