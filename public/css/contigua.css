@@ -1,0 +1,47 @@
+html, body{
+	
+	overflow-x: hidden;
+    
+	
+}
+
+button{
+
+    text-decoration: none;
+}
+
+#formulario{
+	margin-bottom: 80px;
+}
+
+.voltar {
+  font-family: 'arial black';
+  color: #212529;
+  font-size: 1.2em;
+  box-shadow: 2px 2px 2px ;
+  padding: 9px 23px;
+  border-radius: 17px;
+  border: 3px solid ;
+  background: #e9ecef;
+  
+}
+.voltar:hover {
+  color: white!important;
+  font-weight: bold;
+  color: black !important;
+
+}
+
+.nome-tabelas{
+
+	margin: 0 auto;
+}
+
+.formato-input{
+
+	min-width: 400px;
+	max-width: 600px;
+}
+
+
+
