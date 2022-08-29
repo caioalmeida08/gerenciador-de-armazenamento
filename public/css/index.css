@@ -88,13 +88,13 @@ footer{
  }
 
 
- .animacao-imagem{
+ .animacao-img{
 
 	transition: 1s;
 
  }
 
- .animacao-imagem:hover{
+ .animacao-img:hover{
 
 	transform: scale(1.2);
 	
