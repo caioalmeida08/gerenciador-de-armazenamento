@@ -19,7 +19,6 @@ class Memoria {
     // o disco inicialmente é criado vazio, sem nenhum bloco integrado, e posteriormente populado com a funcao popularBlocos()
     // disco físico da memória
     this.disco = new Array();
-
     // armazena em memoria o nome (id) do ultimo arquivo gravado em disco
     this.idArquivo = 0;
   }
@@ -82,11 +81,15 @@ class Memoria {
 
   // * Método responsavel pela alocação contígua
   alocacaoContigua(tamanhoArquivo) {
+    // checa se o arquivo tem o tamanho mínimo necessário
+    if (tamanhoArquivo <= 0) {
+      throw "O arquivo precisa ter no mínimo 1 bloco de tamanho";
+    }
     // checa se a memória é capaz de receber o arquivo
     if (
       this.primeiroEspacoDisponivel(tamanhoArquivo).tamanho < tamanhoArquivo
     ) {
-      throw "Não foi possível gravar o arquivo, espaço insuficiente";
+      throw "Não é possível gravar o arquivo, espaço insuficiente";
     }
 
     // busca onde gravar o arquivo
@@ -149,9 +152,10 @@ const alocacaoContigua_get = async (req, res) => {
       // cria uma nova memória
       memoria = new Memoria(req.query.criar);
     }
+
     // checa se a memória já foi criada
     if (memoria == undefined) {
-      throw "Memória não iniciada";
+      throw "Defina o tamanho da memória antes de utilizá-la";
     }
 
     // aloca um novo arquivo
@@ -166,7 +170,9 @@ const alocacaoContigua_get = async (req, res) => {
 
     res.json(memoria);
   } catch (err) {
-    res.status(500).end(err);
+    res.json({
+      error: err,
+    });
   }
 };
 
