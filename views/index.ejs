@@ -17,6 +17,7 @@
 </head>
 
 <body>
+  <!--' HEADER/NAVBAR' -->
   <header>
     <!-- inicio Cabecalho -->
     <nav class="navbar navbar-expand-sm navbar-light fundo-navbar">
@@ -47,6 +48,7 @@
     </nav>
   </header>
   <!--/fim Cabecalho -->
+  <!-- ' SEÇÃO PRINCIPAL ' -->
   <section id="home">
     <!-- Início seção home -->
     <div class="container">
@@ -76,6 +78,7 @@
     </div>
   </section>
   <!--/fim seção home -->
+  <!-- 'ALOCAÇÃO CONTÍGUA' -->
   <section class="caixa" style="background:#6070E0">
     <div class="container" id="contigua">
       <div class="row">
@@ -107,6 +110,7 @@
       </div>
     </div>
   </section>
+  <!--' ALOCAÇÃO ENCADEADA' -->
   <section class="caixa" style="background:#5663C7">
     <div class="container" id="encadeada">
       <div class="row">
@@ -137,6 +141,7 @@
       </div>
     </div>
   </section>
+  <!-- ' ALOCAÇÃO INDEXADA' -->
   <section class="caixa" style="background:#6070E0">
     <div class="container" id="indexada">
       <div class="row">
@@ -175,18 +180,147 @@
       </div>
     </div>
   </section>
+  <!-- ' GERENCIADOR DE ARQUIVOS ' -->
+  <section class="caixa">
+    <div class="row justify-content-center">
+      <div class="col-sm-10">
+        <div class="row bg-secondary">Gerenciador de Arquivos</div>
+        <div class="row bg-danger">
+          <div class="col-sm-8 bg-dark">
+            <div class="row">
+              <div class="col-sm-12 bg-light">
+                <div class="row bg-warning" id="container-tabela">
+                  <table class="table table-hover" id="ac-tabela">
+                    <thead>
+                      <tr>
+                        <th scope="col">Bloco da memória#️⃣</th>
+                        <th scope="col">Arquivo📁 </th>
+                        <th scope="col">Deletar🗑️</th>
+                      </tr>
+                    </thead>
+                    <tbody id="ac-tbody">
+                      <th>Vazio</th>
+                      <td>Crie uma memória</td>
+                      <td></td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 bg-primary">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="row justify-content-end">
+                  <label for="tipoAlocacao">Tipo de Alocação:</label>
+                  <select name="tipoAlocacao" id="tipoAlocacao">
+                    <option value="ta-contigua">Contígua</option>
+                    <option value="ta-encadeada">Encadeada</option>
+                    <option value="ta-indexada">Indexada</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row bg-info p-3">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="row">Criar uma memória:</div>
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <div class="row">
+                          <input type="number" class="container" name="ac_criar" placeholder="Blocos de memória"
+                            id="valor"></input>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <div class="row">
+                          <button type="submit" class="btn btn-primary" id="ac_criar_button"> Enviar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="row">Criar um Arquivo:</div>
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <div class="row">
+                          <input type="number" class="container" name="ac_alocacaoContigua"
+                            placeholder="Tamanho do arquivo" id="valor"></input>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <div class="row">
+                          <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button"> Enviar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div class="container my-3 alert alert-danger" id="caixaDeErro">
+                        Erro</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <h1 class="display-4" style="margin-bottom: 40px;">Gerir Arquivos</h1>
+        <p class="lead"><label for="ac_criar">Criar um novo disco de memória</label>
+          <input type="number" name="ac_criar" placeholder="tamanho do disco" value="32" id="valor"></input>
+          <button type="submit" class="btn btn-primary" id="ac_criar_button"> Enviar</button>
+          <br>
+          <label for=" ac_alocacaoContigua">Criar um novo arquivo</label>
+          <input type="number" name="ac_alocacaoContigua" placeholder="tamanho do arquivo" value="0"></input>
+          <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button"> Enviar</button>
+          <br>
+          <label for=" ac_deletarArquivo">Deletar um arquivo</label>
+          <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
+          <button type="submit" class="btn btn-primary" id="ac_deletarArquivo_button"> Enviar</button>
+        </p> -->
+        <!-- <hr class="my-4"> -->
+        <!-- <table class=" table table-hover col-sm-6" style="margin: 0 auto ;" id="ac-tabela">
+          <thead>
+            <tr>
+              <th scope="col">Bloco da memória#️⃣</th>
+              <th scope="col">Arquivo📁 </th>
+              <th scope="col">Deletar🗑️</th>
+            </tr>
+          </thead>
+          <tbody id="ac-tbody">
+            <th>Vazio</th>
+            <td>Crie uma memória</td>
+            <td></td>
+          </tbody>
+        </table> -->
+      </div>
+    </div>
+  </section>
+  <!-- ' DEFINIÇÕES ' -->
   <section class="caixa" style="background:#5663C7">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <img src="img/brand.png" class="img-fluid">
           <h4>Arquivos</h4>
-          <p>O Sistema de arquivos é a parte visível de um Sistema Operacional, manipular arquivos é uma atividade comum
+          <p>O Sistema de arquivos é a parte visível de um Sistema Operacional, manipular arquivos é uma atividade
+            comum
             dos usuarios, devendo ocorrer de maneira uniforme</p>
         </div>
         <div class="col-md-4"><img src="img/tipos-de-arquivos.png" class="img-fluid" width="256" height="256">
           <h4>Tipos de Arquivos</h4>
-          <p>Arquivos são constituidos de informações logicas e relacionadas. Definimos os arquivos em duas partes, o
+          <p>Arquivos são constituidos de informações logicas e relacionadas. Definimos os arquivos em duas partes,
+            o
             nome e o tipo de arquivo. Texto.txt, index.html</p>
         </div>
         <div class="col-md-4"><img src="img/organizacao-arquivos.png" class="img-fluid" width="256" height="256">
@@ -197,40 +331,7 @@
       </div>
     </div>
   </section>
-  <section class="jumbotron">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="display-4" style="margin-bottom: 40px;">Gerir Arquivos</h1>
-          <p class="lead"><label for="ac_criar">Criar um novo disco de memória</label>
-            <input type="number" name="ac_criar" placeholder="tamanho do disco" value="32" id="valor"></input>
-            <button type="submit" class="btn btn-primary" id="ac_criar_button""> Enviar</button>
-      <br>
-      <label for=" ac_alocacaoContigua">Criar um novo arquivo</label>
-              <input type="number" name="ac_alocacaoContigua" placeholder="tamanho do arquivo" value="0"></input>
-              <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button""> Enviar</button>
-      <br>
-    <label for=" ac_deletarArquivo">Deletar um arquivo</label>
-                <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
-                <button type="submit" class="btn btn-primary" id="ac_deletarArquivo_button""> Enviar</button>.</p>
-    <hr class=" my-4">
-                  <p>
-                  <div class="alert alert-danger d-md-block " id="caixaDeErro"></div>
-          </p>
-          <table class="table table-hover col-sm-6" style="margin: 0 auto ;" id="ac-tabela">
-            <thead>
-              <tr>
-                <th scope="col">Bloco da memória#️⃣</th>
-                <th scope="col">Arquivo📁 </th>
-                <th scope="col">Deletar🗑️</th>
-              </tr>
-            </thead>
-            <tbody id="ac-tbody">
-            </tbody>
-          </table>
-        </div>
-      </div>
-  </section>
+  <!-- ' RODAPÉ ' -->
   <footer>
     <div class="container" id="sobre">
       <div class="row">
@@ -264,15 +365,21 @@
   </footer>
   <!-- JavaScript (Opcional) -->
   <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+
+  <script src="/js/alocacaoContigua.js"></script>
+
+  <script>
+    $(() => {
+      $("#caixaDeErro").hide()
+    })
+  </script>
 </body>
 
 </html>

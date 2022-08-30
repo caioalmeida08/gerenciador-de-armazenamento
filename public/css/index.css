@@ -70,6 +70,11 @@ body,
   padding: 60px 0;
 }
 
+#container-tabela {
+  max-height: 75vh;
+  overflow: auto;
+}
+
 footer p a {
   margin: 5px 15px;
 }
