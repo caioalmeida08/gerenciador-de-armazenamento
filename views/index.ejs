@@ -14,12 +14,16 @@
   <link rel="stylesheet" type="text/css" href="css/index.css">
   <title>Simulador de Alocação de Arquivos</title>
   <link rel="icon" href="img/logo.png">
+
+
+ 
 </head>
 
 <body>
   <!--' HEADER/NAVBAR' -->
   <header>
     <!-- inicio Cabecalho -->
+    <!-- Começo Nav -->
     <nav class="navbar navbar-expand-sm navbar-light fundo-navbar">
       <div class="container">
         <a href="#" class="navbar-brand">
@@ -46,6 +50,7 @@
         </div>
       </div>
     </nav>
+    <!-- Fim Nav -->
   </header>
   <!--/fim Cabecalho -->
   <!-- ' SEÇÃO PRINCIPAL ' -->
@@ -79,6 +84,7 @@
   </section>
   <!--/fim seção home -->
   <!-- 'ALOCAÇÃO CONTÍGUA' -->
+  <!-- Section começo -->
   <section class="caixa" style="background:#6070E0">
     <div class="container" id="contigua">
       <div class="row">
@@ -99,7 +105,143 @@
                 <h5 class="card-title">Sobre</h5>
                 <p class="card-text">Armazena um arquivo de forma sequencial em blocos, assim um arquivo utiliza um
                   endereço para poder se localizar através do endereõ do primerio bloco.</p>
-                <a href="alocacao-contigua.html" class="btn btn-primary">Simulador</a>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Modal grande</button>
+
+                  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content" style="width: 800px; height: 800px;">
+
+                        <section class="caixa">
+                          <div class="row justify-content-center">
+                            <div class="col-sm-10">
+                              <div class="row bg-secondary">Gerenciador de Arquivos</div>
+                              <div class="row bg-danger">
+                                <div class="col-sm-8 bg-dark">
+                                  <div class="row">
+                                    <div class="col-sm-12 bg-light">
+                                      <div class="row bg-warning" id="container-tabela">
+                                        <table class="table table-hover" id="ac-tabela">
+                                          <thead>
+                                            <tr>
+                                              <th scope="col">Bloco da memória#️⃣</th>
+                                              <th scope="col">Arquivo📁 </th>
+                                              <th scope="col">Deletar🗑️</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody id="ac-tbody">
+                                            <th>Vazio</th>
+                                            <td>Crie uma memória</td>
+                                            <td></td>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-sm-4 bg-primary">
+                                  <div class="row">
+                                    <div class="col-sm-12">
+                                      <div class="row justify-content-end">
+                                        <label for="tipoAlocacao">Tipo de Alocação:</label>
+                                        <select name="tipoAlocacao" id="tipoAlocacao">
+                                          <option value="ta-contigua">Contígua</option>
+                                          <option value="ta-encadeada">Encadeada</option>
+                                          <option value="ta-indexada">Indexada</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row bg-info p-3">
+                                    <div class="col-sm-12">
+                                      <div class="row">
+                                        <div class="col-sm-12">
+                                          <div class="row">Criar uma memória:</div>
+                                          <div class="row">
+                                            <div class="col-sm-8">
+                                              <div class="row">
+                                                <input type="number" class="container" name="ac_criar" placeholder="Blocos de memória"
+                                                  id="valor"></input>
+                                              </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                              <div class="row">
+                                                <button type="submit" class="btn btn-primary" id="ac_criar_button"> Enviar</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-12">
+                                          <div class="row">Criar um Arquivo:</div>
+                                          <div class="row">
+                                            <div class="col-sm-8">
+                                              <div class="row">
+                                                <input type="number" class="container" name="ac_alocacaoContigua"
+                                                  placeholder="Tamanho do arquivo" id="valor"></input>
+                                              </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                              <div class="row">
+                                                <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button"> Enviar</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-12">
+                                          <div class="row">
+                                            <div class="container my-3 alert alert-danger" id="caixaDeErro">
+                                              Erro</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <!-- <h1 class="display-4" style="margin-bottom: 40px;">Gerir Arquivos</h1>
+                              <p class="lead"><label for="ac_criar">Criar um novo disco de memória</label>
+                                <input type="number" name="ac_criar" placeholder="tamanho do disco" value="32" id="valor"></input>
+                                <button type="submit" class="btn btn-primary" id="ac_criar_button"> Enviar</button>
+                                <br>
+                                <label for=" ac_alocacaoContigua">Criar um novo arquivo</label>
+                                <input type="number" name="ac_alocacaoContigua" placeholder="tamanho do arquivo" value="0"></input>
+                                <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button"> Enviar</button>
+                                <br>
+                                <label for=" ac_deletarArquivo">Deletar um arquivo</label>
+                                <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
+                                <button type="submit" class="btn btn-primary" id="ac_deletarArquivo_button"> Enviar</button>
+                              </p> -->
+                              <!-- <hr class="my-4"> -->
+                              <!-- <table class=" table table-hover col-sm-6" style="margin: 0 auto ;" id="ac-tabela">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Bloco da memória#️⃣</th>
+                                    <th scope="col">Arquivo📁 </th>
+                                    <th scope="col">Deletar🗑️</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="ac-tbody">
+                                  <th>Vazio</th>
+                                  <td>Crie uma memória</td>
+                                  <td></td>
+                                </tbody>
+                              </table> -->
+                            </div>
+                          </div>
+                        </section>
+                        ...
+                      </div>
+                    </div>
+                  </div>
+
+                
               </div>
             </div>
           </div>
@@ -110,7 +252,11 @@
       </div>
     </div>
   </section>
+  <!-- Section Fim -->
+  <!-- Fim ALOCAÇÃO CONTIGUA -->
+
   <!--' ALOCAÇÃO ENCADEADA' -->
+  <!-- Section Comeco -->
   <section class="caixa" style="background:#5663C7">
     <div class="container" id="encadeada">
       <div class="row">
@@ -141,7 +287,11 @@
       </div>
     </div>
   </section>
+  <!-- Section Fim -->
+  <!-- Fim ALOCAÇÃO ENCADEADA -->
+
   <!-- ' ALOCAÇÃO INDEXADA' -->
+  <!-- Section Comeco -->
   <section class="caixa" style="background:#6070E0">
     <div class="container" id="indexada">
       <div class="row">
@@ -180,11 +330,15 @@
       </div>
     </div>
   </section>
+  <!-- Section Fim -->
+  <!-- Fim ALOCAÇÃO INDEXADA -->
+
+
   <!-- ' GERENCIADOR DE ARQUIVOS ' -->
   <section class="caixa">
     <div class="row justify-content-center">
       <div class="col-sm-10">
-        <div class="row bg-secondary">Gerenciador de Arquivos</div>
+        <div class="row bg-secondary ">Gerenciador de Arquivos</div>
         <div class="row bg-danger">
           <div class="col-sm-8 bg-dark">
             <div class="row">
