@@ -84,14 +84,12 @@ let renderizar = (response) => {
     tbody.appendChild(linha);
   }
   // apaga mensagens de erro antigas
-  mostrarErro();
   $("#caixaDeErro").hide();
 };
 
 // mostra erros que ocorreram
 let mostrarErro = (erro) => {
   $("#caixaDeErro").show();
-  console.log("erro");
   let caixaDeErro = document.getElementById("caixaDeErro");
   caixaDeErro.innerHTML = erro.error || erro.responseText || "";
 };
