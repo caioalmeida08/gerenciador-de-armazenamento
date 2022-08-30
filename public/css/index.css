@@ -3,6 +3,7 @@
   --primary-grey: #2c3e50;
   --primary-blue: #5663c7;
   --secondary-blue: #6070e0;
+  --text-yellow: #e69a1e;
 }
 
 /*' RESPONSIVIDADE */
@@ -51,11 +52,12 @@ body,
 }
 
 #home h1 {
-  color: #2c3e50;
+  color: var(--primary-grey);
 }
 
+
 #home p {
-  color: #34495e;
+  color: var(--primary-grey);
 }
 
 #display {
@@ -63,7 +65,7 @@ body,
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-  color: #e6d41e;
+  color: var(--text-yellow);
 }
 
 .caixa {
@@ -84,13 +86,13 @@ nav.navbar.navbar-expand-sm.navbar-light.fundo-navbar {
 }
 
 footer {
-  background: #5663c7;
+  background: var(--primary-blue);
   padding: 50px 0px 20px 0px;
   position: relative;
 }
 
 footer h4 {
-  color: #e69a1e;
+  color: var(--text-yellow);
   font-size: 0.8em;
   text-transform: uppercase;
 }
@@ -101,7 +103,7 @@ footer .navbar-nav a {
 }
 
 footer .navbar-nav a:hover {
-  color: #e6d41e;
+  color: var(--text-yellow);
   text-decoration: none;
 }
 footer ul {
