@@ -1,18 +1,27 @@
 html, body{
 	
 	overflow-x: hidden;
+
     
 	
 }
 
+
+
+
+
+
 button{
 
     text-decoration: none;
+
 }
 
 #formulario{
 	margin-bottom: 80px;
 }
+
+
 
 .voltar {
   font-family: 'arial black';

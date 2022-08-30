@@ -176,6 +176,8 @@ const alocacaoContigua_get = async (req, res) => {
   }
 };
 
+
+
 //' LIGAÇÃO COM ROUTER HOME
 module.exports = {
   alocacaoContigua_get,
