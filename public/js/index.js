@@ -112,16 +112,24 @@ let renderizar = (response) => {
           if (response.disco[i] != undefined) {
             if (typeof response.disco[i] == "object") {
               conteudoLinha.innerHTML = response.disco[i].join();
+              conteudoLinha.idArquivo = response.disco[i + 1];
+              conteudoLinha.style.borderRight =
+                cores[response.disco[i + 1]] + " 10px solid";
+              deletarLinha.dataset.idArquivo = response.disco[i + 1];
             } else {
-              conteudoLinha.innerHTML = response.disco[i];
-
+              conteudoLinha.innerHTML =
+                response.disco[i] == undefined
+                  ? "<i><small>Vazio</small></i>"
+                  : response.disco[i];
+              conteudoLinha.idArquivo = response.disco[i];
+              conteudoLinha.style.borderRight =
+                cores[response.disco[i]] + " 10px solid";
               deletarLinha.dataset.idArquivo = response.disco[i];
             }
+            break;
+          } else {
+            conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
           }
-          conteudoLinha.idArquivo = response.disco[i];
-          conteudoLinha.style.borderRight =
-            cores[response.disco[i]] + " 10px solid";
-          break;
       }
 
       let linha = document.createElement("tr");

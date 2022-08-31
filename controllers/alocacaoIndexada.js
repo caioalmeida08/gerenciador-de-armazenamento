@@ -70,13 +70,8 @@ class Memoria {
     // checa se o arquivo existe na memoria
     let existe = false;
     for (let i = 0; i < this.quantidadeBloco; i++) {
-      if (typeof this.disco[i] != "object") {
-        continue;
-      }
-
-      if (this.disco[i].conteudo == idArquivo) {
+      if (this.disco[i] == idArquivo) {
         existe = true;
-        console.log(existe);
         break;
       }
     }
@@ -88,18 +83,27 @@ class Memoria {
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
       // checa se o bloco está alocado pelo método contíguo ou se pelo metodo encadeado/indexado
-      if (typeof this.disco[i] == "object") {
-        // bloco de alocacaoIndexada ou AlocacaoIndexada
-        // checa se o bloco está ocupado pelo arquivo desejado
-        if (this.disco[i].conteudo == idArquivo) {
-          // esvazia o bloco
-          this.disco[i] = undefined;
-          // remove o blocoDeIndice do arquivo
-          if (typeof this.disco[i - 1] == "object") {
-            this.disco[i - 1] = undefined;
-          }
-        }
+      if (
+        typeof this.disco[i] == "object" &&
+        this.disco[this.disco[i][0]] == idArquivo
+      ) {
+        this.disco[i] = undefined;
       }
+      if (this.disco[i] == idArquivo) {
+        this.disco[i] = undefined;
+      }
+      // if (typeof this.disco[i] == "object") {
+      //   // bloco de alocacaoIndexada ou AlocacaoIndexada
+      //   // checa se o bloco está ocupado pelo arquivo desejado
+      //   if (this.disco[i] == idArquivo) {
+      //     // esvazia o bloco
+      //     this.disco[i] = undefined;
+      //     // remove o blocoDeIndice do arquivo
+      //     if (typeof this.disco[i - 1] == "object") {
+      //       this.disco[i - 1] = undefined;
+      //     }
+      //   }
+      // }
     }
   }
 }
@@ -137,6 +141,7 @@ const alocacaoIndexada_get = async (req, res) => {
       memoria.deletarArquivo(req.query.deletarArquivo);
     }
 
+    console.log(memoria);
     res.json(memoria);
   } catch (err) {
     res.status(500).end(err);
