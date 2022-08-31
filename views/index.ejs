@@ -89,7 +89,7 @@
 
   <!-- 'ALOCAÇÃO CONTÍGUA' -->
   <!-- Section começo -->
-  <section class="caixa"  id="bloco-contigua">
+  <section class="caixa" id="bloco-contigua">
     <div class="container" id="contigua">
       <div class="row">
         <div class="col-md-6 d-flex">
@@ -138,7 +138,7 @@
 
   <!--' ALOCAÇÃO ENCADEADA' -->
   <!-- Section Comeco -->
-  <section class="caixa"  id="bloco-encadeada">
+  <section class="caixa" id="bloco-encadeada">
     <div class="container" id="encadeada">
       <div class="row">
         <div class="col-md-6 d-flex order-2">
@@ -217,14 +217,14 @@
 
   <!-- ' GERENCIADOR DE ARQUIVOS ' -->
   <section class="caixa">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center gx-1">
       <div class="col-sm-10">
-        <div class="row bg-secondary ">Gerenciador de Arquivos</div>
-        <div class="row bg-danger">
-          <div class="col-sm-8 bg-dark">
+        <div class="row">Gerenciador de Arquivos</div>
+        <div class="row">
+          <div class="col-sm-8">
             <div class="row">
-              <div class="col-sm-12 bg-light">
-                <div class="row bg-warning" id="container-tabela">
+              <div class="col-sm-12">
+                <div class="row" id="container-tabela">
                   <table class="table table-hover" id="ac-tabela">
                     <thead>
                       <tr>
@@ -243,20 +243,20 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-4 bg-primary">
+          <div class="col-sm-4 bg-light">
             <div class="row">
               <div class="col-sm-12">
                 <div class="row justify-content-end">
                   <label for="tipoAlocacao">Tipo de Alocação:</label>
-                  <select name="tipoAlocacao" id="tipoAlocacao">
-                    <option value="ta-contigua">Contígua</option>
-                    <option value="ta-encadeada">Encadeada</option>
-                    <option value="ta-indexada">Indexada</option>
+                  <select name="tipoAlocacao" id="tipo_alocacao">
+                    <option value="/alocacaoContigua">Contígua</option>
+                    <option value="/alocacaoEncadeada">Encadeada</option>
+                    <option value="/alocacaoIndexada">Indexada</option>
                   </select>
                 </div>
               </div>
             </div>
-            <div class="row bg-info p-3">
+            <div class="row p-3">
               <div class="col-sm-12">
                 <div class="row">
                   <div class="col-sm-12">
@@ -264,13 +264,13 @@
                     <div class="row">
                       <div class="col-sm-8">
                         <div class="row">
-                          <input type="number" class="container" name="ac_criar" placeholder="Blocos de memória"
-                            id="valor"></input>
+                          <input type="number" class="container" name="tamanho_memoria"
+                            placeholder="Blocos de memória"></input>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="row">
-                          <button type="submit" class="btn btn-primary" id="ac_criar_button"> Enviar</button>
+                          <button id="criar_memoria" type="submit" class="btn btn-primary"> Enviar</button>
                         </div>
                       </div>
                     </div>
@@ -282,13 +282,13 @@
                     <div class="row">
                       <div class="col-sm-8">
                         <div class="row">
-                          <input type="number" class="container" name="ac_alocacaoContigua"
-                            placeholder="Tamanho do arquivo" id="valor"></input>
+                          <input type="number" class="container" name="tamanho_arquivo"
+                            placeholder="Tamanho do arquivo"></input>
                         </div>
                       </div>
                       <div class="col-sm-2">
                         <div class="row">
-                          <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button"> Enviar</button>
+                          <button type="submit" class="btn btn-primary" id="criar_arquivo"> Enviar</button>
                         </div>
                       </div>
                     </div>
@@ -364,11 +364,11 @@
             dependendo do tipo de informação do arquivo</p>
         </div>
       </div>
-      
+
     </div>
-    
+
   </section>
-  
+
   <!-- ' RODAPÉ ' -->
   <footer>
     <div class="container" id="sobre">
@@ -387,14 +387,17 @@
         <div class="col-md-6">
           <h4>Membros da Equipe</h4>
           <ul class="navbar-nav">
-            <li><a href="https://github.com/caioalmeida08" target="_blank">Caio</a><a href="https://github.com/caioalmeida08" target="_blank"><img src="img/git.png" width="20" height="20"
+            <li><a href="https://github.com/caioalmeida08" target="_blank">Caio</a><a
+                href="https://github.com/caioalmeida08" target="_blank"><img src="img/git.png" width="20" height="20"
                   class="img-fluid ml-2"></a>
             </li>
-            <li><a href="https://github.com/LuanF11" target="_blank">Luan</a><a href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
+            <li><a href="https://github.com/LuanF11" target="_blank">Luan</a><a href="https://github.com/LuanF11"
+                target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
             </li>
             <li><a href="">Danilo</a>
             </li>
-            <li><a href="https://github.com/kaykBr" target="_blank">Kayky <a href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a></a>
+            <li><a href="https://github.com/kaykBr" target="_blank">Kayky <a href="https://github.com/LuanF11"
+                  target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a></a>
             </li>
             <li><a href="">Eduardo</a>
             </li>
@@ -414,9 +417,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-    
 
-  <script src="/js/alocacaoContigua.js"></script>
+
+  <script src="/js/index.js"></script>
 
   <script>
     $(() => {
