@@ -105,6 +105,8 @@ let renderizar = (response) => {
             conteudoLinha.style.borderRight =
               cores[response.disco[i].conteudo] + " 10px solid";
             deletarLinha.dataset.idArquivo = response.disco[i].conteudo;
+          } else {
+            conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
           }
           break;
 
