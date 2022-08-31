@@ -31,22 +31,23 @@ $(() => {
       mostrarErro(error);
     }
   });
-  // Função utilizada para comunicar a deleção de um arquivo
-  $("#ac_deletarArquivo_button").on("click", async (e) => {
-    let form = {
-      deletarArquivo: $("input[name='ac_deletarArquivo']").val(),
-    };
-
-    try {
-      // envia os dados ao back-end e aguarda resposta
-      let response = await enviar(form);
-      // tenta renderizar a resposta
-      renderizar(response);
-    } catch (error) {
-      mostrarErro(error);
-    }
-  });
 });
+
+let deletar = async (idArquivo) => {
+  // Função utilizada para comunicar a deleção de um arquivo
+  let form = {
+    deletarArquivo: idArquivo,
+  };
+
+  try {
+    // envia os dados ao back-end e aguarda resposta
+    let response = await enviar(form);
+    // tenta renderizar a resposta
+    renderizar(response);
+  } catch (error) {
+    mostrarErro(error);
+  }
+};
 
 // tenta enviar os dados ao back-end
 let enviar = async (form) => {
@@ -88,6 +89,10 @@ let renderizar = (response) => {
     linha.appendChild(deletarLinha);
     tbody.appendChild(linha);
   }
+  // adiciona a funcionalidade do botao deletar
+  $(".deletar-button").on("click", (e) => {
+    deletar(e.currentTarget.dataset.idArquivo);
+  });
   // apaga mensagens de erro antigas
   $("#caixaDeErro").hide();
 };
