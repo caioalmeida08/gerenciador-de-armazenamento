@@ -66,7 +66,16 @@ body,
   font-weight: bold;
 }
 
-.navbar-light .navbar-nav .nav-link:hover {
+
+.cor-texto{
+
+  color:var(--primary-grey);
+}
+#sobre .navbar-nav .cor-texto:hover {
+  color: var(--text-yellow);
+}
+
+.navbar-light .navbar-nav .cor-texto:hover {
   color: var(--text-yellow);
 }
 
@@ -102,11 +111,11 @@ footer p a {
 }
 
 nav.navbar.navbar-expand-sm.navbar-light.fundo-navbar {
-  background-color: var(--primary-purple);
+  background-color: var(--primary-white);
 }
 
 footer {
-  background: var(--primary-blue);
+  background: var(--secondary-white);
   padding: 50px 0px 20px 0px;
   position: relative;
 }
