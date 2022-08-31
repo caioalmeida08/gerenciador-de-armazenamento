@@ -1,6 +1,4 @@
 $(() => {
-  // armazena as cores dos arquivos
-
   // Função utilizada para comunicar a criação de uma nova memória
   $("#ac_criar_button").on("click", async (e) => {
     // coleta os dados do input
@@ -86,11 +84,12 @@ let renderizar = (response) => {
     tbody.appendChild(linha);
   }
   // apaga mensagens de erro antigas
-  mostrarErro();
+  $("#caixaDeErro").hide();
 };
 
 // mostra erros que ocorreram
 let mostrarErro = (erro) => {
+  $("#caixaDeErro").show();
   let caixaDeErro = document.getElementById("caixaDeErro");
   caixaDeErro.innerHTML = erro.error || erro.responseText || "";
 };

@@ -1,7 +1,7 @@
 //' FUNÇÕES DO CONTROLLER
 
 const home_get = async (req, res) => {
-  res.render("alocacao-contigua.ejs");
+  res.render("index.ejs");
 };
 
 //' LIGAÇÃO COM ROUTER HOME

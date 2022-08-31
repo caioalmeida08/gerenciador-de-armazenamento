@@ -5,38 +5,36 @@
   <!-- Meta tags Obrigatórias -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-
   <!-- Estilo customizado -->
   <link rel="stylesheet" type="text/css" href="css/index.css">
 
   <title>Simulador de Alocação de Arquivos</title>
 
+  <!-- Icone da Pagina -->
   <link rel="icon" href="img/logo.png">
+
+
+
 </head>
 
 <body>
-
-
+  <!--' HEADER/NAVBAR' -->
   <header>
     <!-- inicio Cabecalho -->
+    <!-- Começo Nav -->
     <nav class="navbar navbar-expand-sm navbar-light fundo-navbar">
       <div class="container">
-
         <a href="#" class="navbar-brand">
-          <img src="imagem/arquivos.png" width="80">
+          <img src="img/arquivos.png" width="80">
         </a>
-
         <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="nav-principal">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -48,18 +46,17 @@
             <li class="nav-item">
               <a href="#indexada" class="nav-link">Indexada</a>
             </li>
-
             <li class="nav-item">
               <a href="#sobre" class="btn btn-outline-light ml-4">Sobre</a>
             </li>
           </ul>
         </div>
-
       </div>
     </nav>
+    <!-- Fim Nav -->
   </header>
   <!--/fim Cabecalho -->
-
+  <!-- ' SEÇÃO PRINCIPAL ' -->
   <section id="home">
     <!-- Início seção home -->
     <div class="container">
@@ -72,8 +69,6 @@
             <p>
               Simula o modo como as infomações são armazenadas nos dispositivos físicos de armazenamento
             </p>
-
-
             <p>Disponível para
               <a href="" class="btn btn-outline-dark">
                 <i class="fab fa-android fa-lg"></i>
@@ -82,28 +77,26 @@
                 <i class="fab fa-apple"></i>
               </a>
             </p>
-
           </div>
         </div>
         <div class="col-md-6 d-none d-md-block">
-          <img src="imagem/gaveta-arquivos.png">
+          <img src="img/gaveta-arquivos.png">
         </div>
       </div>
     </div>
   </section>
   <!--/fim seção home -->
 
-  <section class="caixa" style="background:#6070E0">
+  <!-- 'ALOCAÇÃO CONTÍGUA' -->
+  <!-- Section começo -->
+  <section class="caixa"  id="bloco-contigua">
     <div class="container" id="contigua">
       <div class="row">
         <div class="col-md-6 d-flex">
           <div class="align-self-center">
-
             <h2>Alocação Contigua</h2>
-
             <p>Usado por mais de 1 milhão de pessoas, o Finans é uma ferramenta online que vai facilitar sua vida
               financeira.</p>
-
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseContigua" role="button"
               aria-expanded="false" aria-controls="collapseExample">
               Veja mais
@@ -116,29 +109,42 @@
                 <h5 class="card-title">Sobre</h5>
                 <p class="card-text">Armazena um arquivo de forma sequencial em blocos, assim um arquivo utiliza um
                   endereço para poder se localizar através do endereõ do primerio bloco.</p>
-                <a href="#" class="btn btn-primary">Simulador</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                  data-target=".bd-example-modal-xl">Modal grande</button>
+
+                <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"
+                  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content" style="width: 800px; height: 800px;">
+
+
+                    </div>
+                  </div>
+                </div>
+
+
               </div>
             </div>
-
           </div>
         </div>
         <div class="col-md-6">
-          <img src="imagem/df.png" class="img-fluid animacao-imagem">
+          <img src="img/df.png" class="img-fluid animacao-img">
         </div>
       </div>
     </div>
   </section>
+  <!-- Section Fim -->
+  <!-- Fim ALOCAÇÃO CONTIGUA -->
 
-  <section class="caixa" style="background:#5663C7">
+  <!--' ALOCAÇÃO ENCADEADA' -->
+  <!-- Section Comeco -->
+  <section class="caixa"  id="bloco-encadeada">
     <div class="container" id="encadeada">
       <div class="row">
         <div class="col-md-6 d-flex order-2">
           <div class="align-self-center">
-
             <h2>Alocação Encadeada</h2>
-
             <p>Alocação encadeada consiste em manter os arquivos, cada um, como uma lista encadeada de blocos</p>
-
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseEncadeada" role="button"
               aria-expanded="false" aria-controls="collapseExample">
               Veja mais
@@ -154,32 +160,31 @@
                 <a href="#" class="btn btn-primary">Simulador</a>
               </div>
             </div>
-
           </div>
         </div>
         <div class="col-md-6 order-1">
-          <img src="imagem/fila-encadeada.png" class="img-fluid animacao-imagem">
+          <img src="img/fila-encadeada.png" class="img-fluid animacao-img">
         </div>
       </div>
     </div>
   </section>
+  <!-- Section Fim -->
+  <!-- Fim ALOCAÇÃO ENCADEADA -->
 
-  <section class="caixa" style="background:#6070E0">
+  <!-- ' ALOCAÇÃO INDEXADA' -->
+  <!-- Section Comeco -->
+  <section class="caixa" id="bloco-indexada">
     <div class="container" id="indexada">
       <div class="row">
         <div class="col-md-6 d-flex">
           <div class="align-self-center">
-
             <h2>Alocação Indexada</h2>
-
             <p>Usado por mais de 1 milhão de pessoas, o Finans é uma ferramenta online que vai facilitar sua vida
               financeira.</p>
-
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseIndexada" role="button"
               aria-expanded="false" aria-controls="collapseExample">
               Veja mais
             </a>
-
             <div class="card collapse mt-4 animacao-card" id="collapseIndexada">
               <div class="card-header">
                 Alocação Indexada
@@ -191,63 +196,185 @@
                 <a href="#" class="btn btn-primary">Simulador</a>
               </div>
             </div>
-
           </div>
         </div>
         <div class="col-md-6">
-          <div class="row albuns animacao-imagem">
+          <div class="row albuns animacao-img">
             <div class="col-md-4 ">
-              <img src="imagem/fila-aponta.png" class="img-fluid" width="180">
+              <img src="img/fila-aponta.png" class="img-fluid" width="180">
             </div>
             <div class="col-md-8">
-              <img src="imagem/fila-indices.png" class="img-fluid" width="284">
+              <img src="img/fila-indices.png" class="img-fluid" width="284">
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <!-- Section Fim -->
+  <!-- Fim ALOCAÇÃO INDEXADA -->
 
-  <section class="caixa" style="background:#5663C7">
+
+  <!-- ' GERENCIADOR DE ARQUIVOS ' -->
+  <section class="caixa">
+    <div class="row justify-content-center">
+      <div class="col-sm-10">
+        <div class="row bg-secondary ">Gerenciador de Arquivos</div>
+        <div class="row bg-danger">
+          <div class="col-sm-8 bg-dark">
+            <div class="row">
+              <div class="col-sm-12 bg-light">
+                <div class="row bg-warning" id="container-tabela">
+                  <table class="table table-hover" id="ac-tabela">
+                    <thead>
+                      <tr>
+                        <th scope="col">Bloco da memória#️⃣</th>
+                        <th scope="col">Arquivo📁 </th>
+                        <th scope="col">Deletar🗑️</th>
+                      </tr>
+                    </thead>
+                    <tbody id="ac-tbody">
+                      <th>Vazio</th>
+                      <td>Crie uma memória</td>
+                      <td></td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 bg-primary">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="row justify-content-end">
+                  <label for="tipoAlocacao">Tipo de Alocação:</label>
+                  <select name="tipoAlocacao" id="tipoAlocacao">
+                    <option value="ta-contigua">Contígua</option>
+                    <option value="ta-encadeada">Encadeada</option>
+                    <option value="ta-indexada">Indexada</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row bg-info p-3">
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="row">Criar uma memória:</div>
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <div class="row">
+                          <input type="number" class="container" name="ac_criar" placeholder="Blocos de memória"
+                            id="valor"></input>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <div class="row">
+                          <button type="submit" class="btn btn-primary" id="ac_criar_button"> Enviar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="row">Criar um Arquivo:</div>
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <div class="row">
+                          <input type="number" class="container" name="ac_alocacaoContigua"
+                            placeholder="Tamanho do arquivo" id="valor"></input>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <div class="row">
+                          <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button"> Enviar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div class="container my-3 alert alert-danger" id="caixaDeErro">
+                        Erro</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <h1 class="display-4" style="margin-bottom: 40px;">Gerir Arquivos</h1>
+        <p class="lead"><label for="ac_criar">Criar um novo disco de memória</label>
+          <input type="number" name="ac_criar" placeholder="tamanho do disco" value="32" id="valor"></input>
+          <button type="submit" class="btn btn-primary" id="ac_criar_button"> Enviar</button>
+          <br>
+          <label for=" ac_alocacaoContigua">Criar um novo arquivo</label>
+          <input type="number" name="ac_alocacaoContigua" placeholder="tamanho do arquivo" value="0"></input>
+          <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button"> Enviar</button>
+          <br>
+          <label for=" ac_deletarArquivo">Deletar um arquivo</label>
+          <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
+          <button type="submit" class="btn btn-primary" id="ac_deletarArquivo_button"> Enviar</button>
+        </p> -->
+        <!-- <hr class="my-4"> -->
+        <!-- <table class=" table table-hover col-sm-6" style="margin: 0 auto ;" id="ac-tabela">
+          <thead>
+            <tr>
+              <th scope="col">Bloco da memória#️⃣</th>
+              <th scope="col">Arquivo📁 </th>
+              <th scope="col">Deletar🗑️</th>
+            </tr>
+          </thead>
+          <tbody id="ac-tbody">
+            <th>Vazio</th>
+            <td>Crie uma memória</td>
+            <td></td>
+          </tbody>
+        </table> -->
+      </div>
+    </div>
+  </section>
+  <!-- ' DEFINIÇÕES ' -->
+  <section class="caixa bloco-definicoes" id="bloco-definicoes">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <img src="imagem/brand.png" class="img-fluid">
-
+          <img src="img/brand.png" class="img-fluid">
           <h4>Arquivos</h4>
-
-          <p>O Sistema de arquivos é a parte visível de um Sistema Operacional, manipular arquivos é uma atividade comum
+          <p>O Sistema de arquivos é a parte visível de um Sistema Operacional, manipular arquivos é uma atividade
+            comum
             dos usuarios, devendo ocorrer de maneira uniforme</p>
         </div>
-        <div class="col-md-4"><img src="imagem/tipos-de-arquivos.png" class="img-fluid" width="256" height="256">
-
+        <div class="col-md-4"><img src="img/tipos-de-arquivos.png" class="img-fluid" width="256" height="256">
           <h4>Tipos de Arquivos</h4>
-
-          <p>Arquivos são constituidos de informações logicas e relacionadas. Definimos os arquivos em duas partes, o
+          <p>Arquivos são constituidos de informações logicas e relacionadas. Definimos os arquivos em duas partes,
+            o
             nome e o tipo de arquivo. Texto.txt, index.html</p>
         </div>
-        <div class="col-md-4"><img src="imagem/organizacao-arquivos.png" class="img-fluid" width="256" height="256">
-
+        <div class="col-md-4"><img src="img/organizacao-arquivos.png" class="img-fluid" width="256" height="256">
           <h4>Organização dos Arquivos</h4>
-
           <p>A organização consiste no modo como os dados estão internamente armazenados, sua estrutura pode variar
             dependendo do tipo de informação do arquivo</p>
         </div>
-
       </div>
+      
     </div>
+    
   </section>
-
-
+  
+  <!-- ' RODAPÉ ' -->
   <footer>
     <div class="container" id="sobre">
-
       <div class="row">
-
-
         <div class="col-md-6">
           <h4>Simuladores</h4>
-
           <ul class="navbar-nav">
             <li><a href="">Alocação Contigua</a>
             </li>
@@ -255,47 +382,47 @@
             </li>
             <li><a href="">Alocação Indexada</a>
             </li>
-
           </ul>
-
-
         </div>
         <div class="col-md-6">
           <h4>Membros da Equipe</h4>
-
           <ul class="navbar-nav">
-            <li><a href="">Sobre </a><a href=""><img src="imagem/git.png" width="20" height="20"
+            <li><a href="https://github.com/caioalmeida08" target="_blank">Caio</a><a href="https://github.com/caioalmeida08" target="_blank"><img src="img/git.png" width="20" height="20"
                   class="img-fluid ml-2"></a>
             </li>
-            <li><a href="">Sobre</a><a href=""><img src="imagem/git.png" width="20" height="20"
-                  class="img-fluid ml-2"></a>
+            <li><a href="https://github.com/LuanF11" target="_blank">Luan</a><a href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
             </li>
-            <li><a href="">Sobre</a>
+            <li><a href="">Danilo</a>
             </li>
-            <li><a href="">Sobre</a>
+            <li><a href="https://github.com/kaykBr" target="_blank">Kayky <a href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a></a>
+            </li>
+            <li><a href="">Eduardo</a>
             </li>
           </ul>
         </div>
-
-
-
-
       </div>
     </div>
-
   </footer>
+  <!-- Fim Rodapé -->
 
   <!-- JavaScript (Opcional) -->
   <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+    
+
+  <script src="/js/alocacaoContigua.js"></script>
+
+  <script>
+    $(() => {
+      $("#caixaDeErro").hide()
+    })
+  </script>
 </body>
 
 </html>
