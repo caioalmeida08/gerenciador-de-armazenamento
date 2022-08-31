@@ -38,16 +38,16 @@
         <div class="collapse navbar-collapse" id="nav-principal">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href="#contigua" class="nav-link">Contigua</a>
+              <a href="#contigua" class="nav-link"><span class="cor-texto">Contigua</span></a>
             </li>
             <li class="nav-item">
-              <a href="#encadeada" class="nav-link">Encadeada</a>
+              <a href="#encadeada" class="nav-link"><span class="cor-texto">Encadeada</span></a>
             </li>
             <li class="nav-item">
-              <a href="#indexada" class="nav-link">Indexada</a>
+              <a href="#indexada" class="nav-link"><span class="cor-texto">Indexada</span></a>
             </li>
             <li class="nav-item">
-              <a href="#sobre" class="btn btn-outline-light ml-4">Sobre</a>
+              <a href="#sobre" class="btn btn-outline-dark ml-4">Sobre</a>
             </li>
           </ul>
         </div>
@@ -109,18 +109,9 @@
                 <h5 class="card-title">Sobre</h5>
                 <p class="card-text">Armazena um arquivo de forma sequencial em blocos, assim um arquivo utiliza um
                   endereço para poder se localizar através do endereõ do primerio bloco.</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal"
-                  data-target=".bd-example-modal-xl">Modal grande</button>
-
-                <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"
-                  aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content" style="width: 800px; height: 800px;">
+                <button type="button" class="btn btn-primary">Simulador</button>
 
 
-                    </div>
-                  </div>
-                </div>
 
 
               </div>
@@ -308,6 +299,38 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <h1 class="display-4" style="margin-bottom: 40px;">Gerir Arquivos</h1>
+        <p class="lead"><label for="ac_criar">Criar um novo disco de memória</label>
+          <input type="number" name="ac_criar" placeholder="tamanho do disco" value="32" id="valor"></input>
+          <button type="submit" class="btn btn-primary" id="ac_criar_button"> Enviar</button>
+          <br>
+          <label for=" ac_alocacaoContigua">Criar um novo arquivo</label>
+          <input type="number" name="ac_alocacaoContigua" placeholder="tamanho do arquivo" value="0"></input>
+          <button type="submit" class="btn btn-primary" id="ac_alocacaoContigua_button"> Enviar</button>
+          <br>
+          <label for=" ac_deletarArquivo">Deletar um arquivo</label>
+          <input type="number" name="ac_deletarArquivo" placeholder="nome do arquivo" value="0"></input>
+          <button type="submit" class="btn btn-primary" id="ac_deletarArquivo_button"> Enviar</button>
+        </p> -->
+        <!-- <hr class="my-4"> -->
+        <!-- <table class=" table table-hover col-sm-6" style="margin: 0 auto ;" id="ac-tabela">
+          <thead>
+            <tr>
+              <th scope="col">Bloco da memória#️⃣</th>
+              <th scope="col">Arquivo📁 </th>
+              <th scope="col">Deletar🗑️</th>
+            </tr>
+          </thead>
+          <tbody id="ac-tbody">
+            <th>Vazio</th>
+            <td>Crie uma memória</td>
+            <td></td>
+          </tbody>
+        </table> -->
+      </div>
+    </div>
   </section>
   <!-- ' DEFINIÇÕES ' -->
   <section class="caixa bloco-definicoes" id="bloco-definicoes">
@@ -344,30 +367,34 @@
         <div class="col-md-6">
           <h4>Simuladores</h4>
           <ul class="navbar-nav">
-            <li><a href="">Alocação Contigua</a>
+            <li><a href=""><span class="cor-texto">Alocação Contigua</span></a>
             </li>
-            <li><a href="">Alocação Encadeada</a>
+            <li><a href=""><span class="cor-texto">Alocação Encadeada</span></a>
             </li>
-            <li><a href="">Alocação Indexada</a>
+            <li><a href=""><span class="cor-texto">Alocação Indexada</span></a>
             </li>
           </ul>
         </div>
         <div class="col-md-6">
           <h4>Membros da Equipe</h4>
           <ul class="navbar-nav">
-            <li><a href="https://github.com/caioalmeida08" target="_blank">Caio</a><a
+            <li><a href="https://github.com/caioalmeida08" target="_blank"><span class="cor-texto">Caio</span></a><a
                 href="https://github.com/caioalmeida08" target="_blank"><img src="img/git.png" width="20" height="20"
                   class="img-fluid ml-2"></a>
             </li>
-            <li><a href="https://github.com/LuanF11" target="_blank">Luan</a><a href="https://github.com/LuanF11"
-                target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
+            <li><a href="https://github.com/LuanF11" target="_blank"><span class="cor-texto">Luan</span></a><a
+                href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20"
+                  class="img-fluid ml-2"></a>
             </li>
-            <li><a href="">Danilo</a>
+            <li><a href="https://github.com/Danilo259" target="_blank"><span class="cor-texto">Danilo</span> <a
+                  href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20"
+                    class="img-fluid ml-2"></a></a>
             </li>
-            <li><a href="https://github.com/kaykBr" target="_blank">Kayky <a href="https://github.com/LuanF11"
-                  target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a></a>
+            <li><a href="https://github.com/kaykBr" target="_blank"><span class="cor-texto">Kayky</span> <a
+                  href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20"
+                    class="img-fluid ml-2"></a></a>
             </li>
-            <li><a href="">Eduardo</a>
+            <li><a href=""><span class="cor-texto">Eduardo</span></a>
             </li>
           </ul>
         </div>
