@@ -51,7 +51,8 @@ let deletar = async (idArquivo) => {
 
 // tenta enviar os dados ao back-end
 let enviar = async (form) => {
-  const response = await $.get("/alocacaoContigua", form);
+  let tipoAlocacao = $("#tipo_alocacao").val();
+  const response = await $.get(tipoAlocacao, form);
   if (jQuery.isEmptyObject(response) || response.error != undefined) {
     throw response;
   }
