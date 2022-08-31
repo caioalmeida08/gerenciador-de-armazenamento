@@ -43,7 +43,9 @@ class Memoria {
 
       // checa se o bloco está vazio
       if (this.disco[i] != undefined) {
-        continue;
+        if (this.disco[i].conteudo != undefined) {
+          continue;
+        }
       }
 
       // grava o arquivo
@@ -56,6 +58,9 @@ class Memoria {
 
       for (let j = 0; j < this.quantidadeBloco; j++) {
         if (this.disco[j] == undefined) {
+          proximoBloco = j;
+          break;
+        } else if (this.disco[j].conteudo == undefined) {
           proximoBloco = j;
           break;
         }
@@ -105,9 +110,8 @@ class Memoria {
         // checa se o bloco está ocupado pelo arquivo desejado
         if (this.disco[i].conteudo == idArquivo) {
           // esvazia o bloco
-          this.disco[i] = {
-            conteudo: undefined,
-          };
+          this.disco[i].conteudo = undefined;
+          this.disco[i].proximo = undefined;
         }
       }
     }
@@ -138,8 +142,8 @@ const alocacaoEncadeada_get = (req, res) => {
     }
 
     // aloca um novo arquivo
-    if (req.query.alocacaoEncadeada) {
-      memoria.alocacaoEncadeada(req.query.alocacaoEncadeada);
+    if (req.query.tamanhoArquivo) {
+      memoria.alocacaoEncadeada(req.query.tamanhoArquivo);
     }
 
     // deleta um arquivo

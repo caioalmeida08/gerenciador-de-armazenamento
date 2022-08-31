@@ -159,8 +159,8 @@ const alocacaoContigua_get = async (req, res) => {
     }
 
     // aloca um novo arquivo
-    if (req.query.alocacaoContigua) {
-      memoria.alocacaoContigua(req.query.alocacaoContigua);
+    if (req.query.tamanhoArquivo) {
+      memoria.alocacaoContigua(req.query.tamanhoArquivo);
     }
 
     // deleta um arquivo
@@ -175,8 +175,6 @@ const alocacaoContigua_get = async (req, res) => {
     });
   }
 };
-
-
 
 //' LIGAÇÃO COM ROUTER HOME
 module.exports = {

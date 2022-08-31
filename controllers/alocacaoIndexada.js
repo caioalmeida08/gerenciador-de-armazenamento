@@ -127,8 +127,8 @@ const alocacaoIndexada_get = async (req, res) => {
     }
 
     // aloca um novo arquivo
-    if (req.query.alocacaoIndexada) {
-      memoria.alocacaoIndexada(req.query.alocacaoIndexada);
+    if (req.query.tamanhoArquivo) {
+      memoria.alocacaoIndexada(req.query.tamanhoArquivo);
     }
 
     // deleta um arquivo
