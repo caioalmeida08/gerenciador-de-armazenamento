@@ -79,31 +79,49 @@ let renderizar = (response) => {
       deletarLinha.innerHTML = "deletar";
       deletarLinha.classList = "deletar-button";
 
-      if (typeof response.disco[i] == "object" && response.disco[i] != null) {
-        conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
-        if (typeof response.disco[i] != undefined) {
-          if (response.disco[i].conteudo != undefined) {
-            conteudoLinha.innerHTML =
-              response.disco[i].conteudo +
-              " | " +
-              (response.disco[i].proximo || "null");
-          } else {
-            conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
-          }
-          conteudoLinha.idArquivo = response.disco[i].conteudo;
+      switch (response.tipoAlocacao) {
+        case "alocacaoContigua":
+          conteudoLinha.innerHTML =
+            response.disco[i] == undefined
+              ? "<i><small>Vazio</small></i>"
+              : response.disco[i];
+          conteudoLinha.idArquivo = response.disco[i];
           conteudoLinha.style.borderRight =
-            cores[response.disco[i].conteudo] + " 10px solid";
-          deletarLinha.dataset.idArquivo = response.disco[i].conteudo;
-        }
-      } else {
-        conteudoLinha.innerHTML =
-          response.disco[i] == undefined
-            ? "<i><small>Vazio</small></i>"
-            : response.disco[i];
-        conteudoLinha.idArquivo = response.disco[i];
-        conteudoLinha.style.borderRight =
-          cores[response.disco[i]] + " 10px solid";
-        deletarLinha.dataset.idArquivo = response.disco[i];
+            cores[response.disco[i]] + " 10px solid";
+          deletarLinha.dataset.idArquivo = response.disco[i];
+          break;
+
+        case "alocacaoEncadeada":
+          if (typeof response.disco[i] == "object") {
+            if (response.disco[i].conteudo != undefined) {
+              conteudoLinha.innerHTML =
+                response.disco[i].conteudo +
+                " | " +
+                (response.disco[i].proximo || "null");
+            } else {
+              conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
+            }
+            conteudoLinha.idArquivo = response.disco[i].conteudo;
+            conteudoLinha.style.borderRight =
+              cores[response.disco[i].conteudo] + " 10px solid";
+            deletarLinha.dataset.idArquivo = response.disco[i].conteudo;
+          }
+          break;
+
+        case "alocacaoIndexada":
+          if (response.disco[i] != undefined) {
+            if (typeof response.disco[i] == "object") {
+              conteudoLinha.innerHTML = response.disco[i].join();
+            } else {
+              conteudoLinha.innerHTML = response.disco[i];
+
+              deletarLinha.dataset.idArquivo = response.disco[i];
+            }
+          }
+          conteudoLinha.idArquivo = response.disco[i];
+          conteudoLinha.style.borderRight =
+            cores[response.disco[i]] + " 10px solid";
+          break;
       }
 
       let linha = document.createElement("tr");

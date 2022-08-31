@@ -6,9 +6,10 @@ class Memoria {
     // o disco inicialmente é criado vazio, sem nenhum bloco integrado, e posteriormente populado com a funcao popularBlocos()
     // disco físico da memória
     this.disco = new Array();
-
     // armazena em memoria o nome (id) do ultimo arquivo gravado em disco
     this.idArquivo = 0;
+    // armazena o tipo de alocação
+    this.tipoAlocacao = "alocacaoIndexada";
   }
 
   // * Checa o espaco disponivel na memoria

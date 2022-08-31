@@ -21,6 +21,8 @@ class Memoria {
     this.disco = new Array();
     // armazena em memoria o nome (id) do ultimo arquivo gravado em disco
     this.idArquivo = 0;
+    // armazena o tipo de alocação
+    this.tipoAlocacao = "alocacaoContigua";
   }
 
   // * Checa o espaco disponivel na memoria
