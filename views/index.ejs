@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <!-- Estilo customizado -->
   <link rel="stylesheet" type="text/css" href="css/index.css">
+
   <title>Simulador de Alocação de Arquivos</title>
+
+  <!-- Icone da Pagina -->
   <link rel="icon" href="img/logo.png">
 
 
@@ -83,9 +86,10 @@
     </div>
   </section>
   <!--/fim seção home -->
+
   <!-- 'ALOCAÇÃO CONTÍGUA' -->
   <!-- Section começo -->
-  <section class="caixa" style="background:#6070E0">
+  <section class="caixa"  id="bloco-contigua">
     <div class="container" id="contigua">
       <div class="row">
         <div class="col-md-6 d-flex">
@@ -134,7 +138,7 @@
 
   <!--' ALOCAÇÃO ENCADEADA' -->
   <!-- Section Comeco -->
-  <section class="caixa" style="background:#5663C7">
+  <section class="caixa"  id="bloco-encadeada">
     <div class="container" id="encadeada">
       <div class="row">
         <div class="col-md-6 d-flex order-2">
@@ -169,7 +173,7 @@
 
   <!-- ' ALOCAÇÃO INDEXADA' -->
   <!-- Section Comeco -->
-  <section class="caixa" style="background:#6070E0">
+  <section class="caixa" id="bloco-indexada">
     <div class="container" id="indexada">
       <div class="row">
         <div class="col-md-6 d-flex">
@@ -338,7 +342,7 @@
     </div>
   </section>
   <!-- ' DEFINIÇÕES ' -->
-  <section class="caixa" style="background:#5663C7">
+  <section class="caixa bloco-definicoes" id="bloco-definicoes">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -360,8 +364,11 @@
             dependendo do tipo de informação do arquivo</p>
         </div>
       </div>
+      
     </div>
+    
   </section>
+  
   <!-- ' RODAPÉ ' -->
   <footer>
     <div class="container" id="sobre">
@@ -380,20 +387,24 @@
         <div class="col-md-6">
           <h4>Membros da Equipe</h4>
           <ul class="navbar-nav">
-            <li><a href="">Sobre </a><a href=""><img src="img/git.png" width="20" height="20"
+            <li><a href="https://github.com/caioalmeida08" target="_blank">Caio</a><a href="https://github.com/caioalmeida08" target="_blank"><img src="img/git.png" width="20" height="20"
                   class="img-fluid ml-2"></a>
             </li>
-            <li><a href="">Sobre</a><a href=""><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
+            <li><a href="https://github.com/LuanF11" target="_blank">Luan</a><a href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
             </li>
-            <li><a href="">Sobre</a>
+            <li><a href="">Danilo</a>
             </li>
-            <li><a href="">Sobre</a>
+            <li><a href="https://github.com/kaykBr" target="_blank">Kayky <a href="https://github.com/LuanF11" target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a></a>
+            </li>
+            <li><a href="">Eduardo</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </footer>
+  <!-- Fim Rodapé -->
+
   <!-- JavaScript (Opcional) -->
   <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -403,6 +414,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+    
 
   <script src="/js/alocacaoContigua.js"></script>
 
