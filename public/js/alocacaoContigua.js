@@ -79,8 +79,9 @@ let renderizar = (response) => {
         : response.disco[i];
     conteudoLinha.idArquivo = response.disco[i];
     conteudoLinha.style.borderRight = cores[response.disco[i]] + " 10px solid";
-    deletarLinha.innerHTML = "<delete class='text-danger'>deletar<delete>";
-    deletarLinha.data = response.disco[i];
+    deletarLinha.innerHTML = "deletar";
+    deletarLinha.classList = "deletar-button";
+    deletarLinha.dataset.idArquivo = response.disco[i];
     let linha = document.createElement("tr");
     linha.appendChild(numeroLinha);
     linha.appendChild(conteudoLinha);
