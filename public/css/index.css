@@ -55,7 +55,6 @@ body,
   color: var(--primary-grey);
 }
 
-
 #home p {
   color: var(--primary-grey);
 }
@@ -75,6 +74,10 @@ body,
 #container-tabela {
   max-height: 75vh;
   overflow: auto;
+}
+
+delete {
+  cursor: pointer;
 }
 
 footer p a {

@@ -72,15 +72,19 @@ let renderizar = (response) => {
     numeroLinha.scope = "row";
     numeroLinha.innerHTML = i + 1;
     let conteudoLinha = document.createElement("td");
+    let deletarLinha = document.createElement("td");
     conteudoLinha.innerHTML =
       response.disco[i] == undefined
         ? "<i><small>Vazio</small></i>"
         : response.disco[i];
     conteudoLinha.idArquivo = response.disco[i];
     conteudoLinha.style.borderRight = cores[response.disco[i]] + " 10px solid";
+    deletarLinha.innerHTML = "<delete class='text-danger'>deletar<delete>";
+    deletarLinha.data = response.disco[i];
     let linha = document.createElement("tr");
     linha.appendChild(numeroLinha);
     linha.appendChild(conteudoLinha);
+    linha.appendChild(deletarLinha);
     tbody.appendChild(linha);
   }
   // apaga mensagens de erro antigas
