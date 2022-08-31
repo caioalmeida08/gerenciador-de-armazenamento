@@ -79,7 +79,7 @@ let renderizar = (response) => {
       deletarLinha.innerHTML = "deletar";
       deletarLinha.classList = "deletar-button";
 
-      if (typeof response.disco[i] == "object") {
+      if (typeof response.disco[i] == "object" && response.disco[i] != null) {
         conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
         if (typeof response.disco[i] != undefined) {
           if (response.disco[i].conteudo != undefined) {
