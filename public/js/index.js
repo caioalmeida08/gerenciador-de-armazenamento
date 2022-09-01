@@ -1,4 +1,14 @@
 $(() => {
+  $("#tipo_alocacao").on("change", async (e) => {
+    try {
+      // envia os dados ao back-end e aguarda resposta
+      let response = await enviar();
+      // tenta renderizar a resposta
+      renderizar(response);
+    } catch (error) {
+      mostrarErro(error);
+    }
+  });
   // Função utilizada para comunicar a criação de uma nova memória
   $("#criar_memoria").on("click", async (e) => {
     // coleta os dados do input
