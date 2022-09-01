@@ -119,6 +119,12 @@ const alocacaoIndexada_get = async (req, res) => {
       throw "Memória não iniciada";
     }
 
+    // checa se é um pedido de atualização da tabela (get)
+    if (req.query.getMemoria) {
+      res.json(memoria);
+      return;
+    }
+
     // aloca um novo arquivo
     if (req.query.tamanhoArquivo) {
       memoria.alocacaoIndexada(req.query.tamanhoArquivo);
@@ -129,7 +135,6 @@ const alocacaoIndexada_get = async (req, res) => {
       memoria.deletarArquivo(req.query.deletarArquivo);
     }
 
-    console.log(memoria);
     res.json(memoria);
   } catch (err) {
     res.status(500).end(err);

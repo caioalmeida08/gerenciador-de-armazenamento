@@ -142,6 +142,12 @@ const alocacaoEncadeada_get = (req, res) => {
       throw "Memória não iniciada";
     }
 
+    // checa se é um pedido de atualização da tabela (get)
+    if (req.query.getMemoria) {
+      res.json(memoria);
+      return;
+    }
+
     // aloca um novo arquivo
     if (req.query.tamanhoArquivo) {
       memoria.alocacaoEncadeada(req.query.tamanhoArquivo);

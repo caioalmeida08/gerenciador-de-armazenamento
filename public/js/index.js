@@ -1,8 +1,9 @@
 $(() => {
-  $("#tipo_alocacao").on("change", async (e) => {
+  $("#tipo_alocacao").on("change", async () => {
     try {
       // envia os dados ao back-end e aguarda resposta
-      let response = await enviar();
+      let response = await enviar({ getMemoria: true });
+
       // tenta renderizar a resposta
       renderizar(response);
     } catch (error) {
@@ -130,7 +131,6 @@ let renderizar = (response) => {
                   proximo = j;
                 }
               }
-              console.log(proximo);
               conteudoLinha.idArquivo = response.disco[proximo];
               conteudoLinha.style.borderRight =
                 cores[response.disco[proximo]] + " 10px solid";
@@ -164,7 +164,7 @@ let renderizar = (response) => {
     // apaga mensagens de erro antigas
     $("#caixaDeErro").hide();
   } catch (error) {
-    console.log(error);
+    mostrarErro(error);
   }
 };
 
