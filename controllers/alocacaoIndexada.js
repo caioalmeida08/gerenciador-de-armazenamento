@@ -92,18 +92,6 @@ class Memoria {
       if (this.disco[i] == idArquivo) {
         this.disco[i] = undefined;
       }
-      // if (typeof this.disco[i] == "object") {
-      //   // bloco de alocacaoIndexada ou AlocacaoIndexada
-      //   // checa se o bloco está ocupado pelo arquivo desejado
-      //   if (this.disco[i] == idArquivo) {
-      //     // esvazia o bloco
-      //     this.disco[i] = undefined;
-      //     // remove o blocoDeIndice do arquivo
-      //     if (typeof this.disco[i - 1] == "object") {
-      //       this.disco[i - 1] = undefined;
-      //     }
-      //   }
-      // }
     }
   }
 }

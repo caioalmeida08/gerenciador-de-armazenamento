@@ -66,10 +66,8 @@ body,
   font-weight: bold;
 }
 
-
-.cor-texto{
-
-  color:var(--primary-grey);
+.cor-texto {
+  color: var(--primary-grey);
 }
 #sobre .navbar-nav .cor-texto:hover {
   color: var(--text-yellow);
@@ -88,7 +86,13 @@ body,
   overflow: auto;
 }
 
+#container-tabela td {
+  max-width: 25vw;
+  overflow-x: auto;
+}
+
 #container-tabela::-webkit-scrollbar {
+  height: 8px;
   width: 8px;
   background-color: #f5f5f5;
 }
@@ -96,7 +100,7 @@ body,
 #container-tabela::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px var(--primary-blue);
-          box-shadow: inset 0 0 6px var(--primary-blue);
+  box-shadow: inset 0 0 6px var(--primary-blue);
   box-shadow: inset 0 0 6px var(--primary-blue);
   background-color: var(--primary-blue);
 }

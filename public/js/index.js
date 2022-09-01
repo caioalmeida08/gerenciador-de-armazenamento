@@ -114,10 +114,17 @@ let renderizar = (response) => {
           if (response.disco[i] != undefined) {
             if (typeof response.disco[i] == "object") {
               conteudoLinha.innerHTML = response.disco[i].join();
-              conteudoLinha.idArquivo = response.disco[i + 1];
+              let proximo;
+              for (let j = 0; j < response.quantidadeBloco; j++) {
+                if (response.disco[j] == response.disco[response.disco[i][0]]) {
+                  proximo = j;
+                }
+              }
+              console.log(proximo);
+              conteudoLinha.idArquivo = response.disco[proximo];
               conteudoLinha.style.borderRight =
-                cores[response.disco[i + 1]] + " 10px solid";
-              deletarLinha.dataset.idArquivo = response.disco[i + 1];
+                cores[response.disco[proximo]] + " 10px solid";
+              deletarLinha.dataset.idArquivo = response.disco[proximo];
             } else {
               conteudoLinha.innerHTML =
                 response.disco[i] == undefined
