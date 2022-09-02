@@ -196,11 +196,11 @@ let mostrarErro = (erro) => {
 };
 
 let corAleatoria = () => {
-  let possibilidades = "123456789ABCDEF";
+  let possibilidades = "0123456789ABCDEF";
   let hexadecimal = new Array();
 
   for (let i = 0; i < 6; i++) {
-    hexadecimal.push(possibilidades[Math.round(Math.random() * 14)]);
+    hexadecimal.push(possibilidades[Math.round(Math.random() * 15)]);
   }
 
   hexadecimal.unshift("#");
