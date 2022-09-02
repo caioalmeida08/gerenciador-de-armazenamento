@@ -108,7 +108,11 @@ const alocacaoIndexada_get = async (req, res) => {
     if (req.query.criar) {
       // checa se a memória tem o espaço mínimo de 1
       if (req.query.criar < 1) {
-        throw "Espaço mínimo da memória não atingido";
+        throw "Espaço mínimo da memória é de 1";
+      }
+      // checa se a memória tem o espaço máximo de 256
+      if (req.query.criar > 256) {
+        throw "Espaço máximo da memória é de 256";
       }
       // cria uma nova memória
       memoria = new Memoria(req.query.criar);
@@ -116,7 +120,7 @@ const alocacaoIndexada_get = async (req, res) => {
 
     // checa se a memória já foi criada
     if (memoria == undefined) {
-      throw "Memória não iniciada";
+      throw "Memória de alocação indexada não inicializada";
     }
 
     // checa se é um pedido de atualização da tabela (get)
@@ -137,7 +141,9 @@ const alocacaoIndexada_get = async (req, res) => {
 
     res.json(memoria);
   } catch (err) {
-    res.status(500).end(err);
+    res.json({
+      error: err,
+    });
   }
 };
 
