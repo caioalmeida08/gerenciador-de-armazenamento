@@ -131,13 +131,24 @@ let mostrarErro = (erro) => {
 };
 
 let corAleatoria = () => {
-  let possibilidades = "123456789ABCDEF";
+  let possibilidades = "0123456789ABCDEF";
   let hexadecimal = new Array();
+  let escolha = Math.round(Math.random() * 1);
 
-  for (let i = 0; i < 6; i++) {
-    hexadecimal.push(possibilidades[Math.round(Math.random() * 14)]);
+
+
+  if (escolha === 1) {
+    for (let i = 0; i < 6; i++) {
+      hexadecimal.push(possibilidades[Math.round(Math.random() * 15)]);
+    }
+  } else {
+    for (let i = 0; i < 6; i++) {
+      hexadecimal.push(possibilidades[Math.round(Math.random() * 15)]);
+    }
+    hexadecimal.splice(0, 3, "F", "F", "F");
   }
 
   hexadecimal.unshift("#");
   return hexadecimal.join("");
+
 };
