@@ -7,6 +7,26 @@ $(() => {
       // tenta renderizar a resposta
       renderizar(response);
     } catch (error) {
+      // checa se é um pedido de get com memória não iniciada
+      if (error.error.includes("inicializada")) {
+        // deleta o conteudo da ta bela
+        let tbody = document.getElementById("tabela-body");
+        tbody.innerHTML = "";
+
+        // popula cada linha da tabela
+        let linha = document.createElement("tr");
+        let numeroLinha = document.createElement("th");
+        numeroLinha.scope = "row";
+        numeroLinha.innerHTML = "Vazio";
+        let conteudoLinha = document.createElement("td");
+        conteudoLinha.innerHTML = "Crie uma memória";
+        let deletarLinha = document.createElement("td");
+
+        linha.appendChild(numeroLinha);
+        linha.appendChild(conteudoLinha);
+        linha.appendChild(deletarLinha);
+        tbody.appendChild(linha);
+      }
       mostrarErro(error);
     }
   });
@@ -164,23 +184,6 @@ let renderizar = (response) => {
     // apaga mensagens de erro antigas
     $("#caixaDeErro").hide();
   } catch (error) {
-    // deleta o conteudo da ta bela
-    let tbody = document.getElementById("tabela-body");
-    tbody.innerHTML = "";
-
-    // popula cada linha da tabela
-    let numeroLinha = document.createElement("th");
-    numeroLinha.scope = "row";
-    numeroLinha.innerHTML = "Vazio";
-    let conteudoLinha = document.createElement("td");
-    conteudoLinha.innerHTML = "Crie uma memória";
-    let deletarLinha = document.createElement("td");
-
-    linha.appendChild(numeroLinha);
-    linha.appendChild(conteudoLinha);
-    linha.appendChild(deletarLinha);
-    tbody.appendChild(linha);
-    console.log(conteudoLinha);
     mostrarErro(error);
   }
 };
