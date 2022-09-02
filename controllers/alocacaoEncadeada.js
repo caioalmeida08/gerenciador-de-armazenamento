@@ -164,7 +164,9 @@ const alocacaoEncadeada_get = (req, res) => {
 
     res.json(memoria);
   } catch (err) {
-    res.status(500).end(err);
+    res.json({
+      error: err,
+    });
   }
 };
 

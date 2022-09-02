@@ -76,7 +76,7 @@ let renderizar = (response) => {
   try {
     cores.push(corAleatoria());
     // deleta o conteudo da ta bela
-    let tbody = document.getElementById("ac-tbody");
+    let tbody = document.getElementById("tabela-body");
     tbody.innerHTML = "";
     // percorre todo o disco
     for (let i = 0; i < response.quantidadeBloco; i++) {
@@ -164,6 +164,23 @@ let renderizar = (response) => {
     // apaga mensagens de erro antigas
     $("#caixaDeErro").hide();
   } catch (error) {
+    // deleta o conteudo da ta bela
+    let tbody = document.getElementById("tabela-body");
+    tbody.innerHTML = "";
+
+    // popula cada linha da tabela
+    let numeroLinha = document.createElement("th");
+    numeroLinha.scope = "row";
+    numeroLinha.innerHTML = "Vazio";
+    let conteudoLinha = document.createElement("td");
+    conteudoLinha.innerHTML = "Crie uma memória";
+    let deletarLinha = document.createElement("td");
+
+    linha.appendChild(numeroLinha);
+    linha.appendChild(conteudoLinha);
+    linha.appendChild(deletarLinha);
+    tbody.appendChild(linha);
+    console.log(conteudoLinha);
     mostrarErro(error);
   }
 };
