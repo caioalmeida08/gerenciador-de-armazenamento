@@ -1,4 +1,15 @@
 $(() => {
+  $("#tipo_alocacao").on("change", async () => {
+    try {
+      // envia os dados ao back-end e aguarda resposta
+      let response = await enviar({ getMemoria: true });
+
+      // tenta renderizar a resposta
+      renderizar(response);
+    } catch (error) {
+      mostrarErro(error);
+    }
+  });
   // Função utilizada para comunicar a criação de uma nova memória
   $("#criar_memoria").on("click", async (e) => {
     // coleta os dados do input
@@ -79,31 +90,65 @@ let renderizar = (response) => {
       deletarLinha.innerHTML = "deletar";
       deletarLinha.classList = "deletar-button";
 
-      if (typeof response.disco[i] == "object" && response.disco[i] != null) {
-        conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
-        if (typeof response.disco[i] != undefined) {
-          if (response.disco[i].conteudo != undefined) {
-            conteudoLinha.innerHTML =
-              response.disco[i].conteudo +
-              " | " +
-              (response.disco[i].proximo || "null");
+      switch (response.tipoAlocacao) {
+        case "alocacaoContigua":
+          conteudoLinha.innerHTML =
+            response.disco[i] == undefined
+              ? "<i><small>Vazio</small></i>"
+              : response.disco[i];
+          conteudoLinha.idArquivo = response.disco[i];
+          conteudoLinha.style.borderRight =
+            cores[response.disco[i]] + " 10px solid";
+          deletarLinha.dataset.idArquivo = response.disco[i];
+          break;
+
+        case "alocacaoEncadeada":
+          if (typeof response.disco[i] == "object") {
+            if (response.disco[i].conteudo != undefined) {
+              conteudoLinha.innerHTML =
+                response.disco[i].conteudo +
+                " | " +
+                (response.disco[i].proximo || "null");
+            } else {
+              conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
+            }
+            conteudoLinha.idArquivo = response.disco[i].conteudo;
+            conteudoLinha.style.borderRight =
+              cores[response.disco[i].conteudo] + " 10px solid";
+            deletarLinha.dataset.idArquivo = response.disco[i].conteudo;
           } else {
             conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
           }
-          conteudoLinha.idArquivo = response.disco[i].conteudo;
-          conteudoLinha.style.borderRight =
-            cores[response.disco[i].conteudo] + " 10px solid";
-          deletarLinha.dataset.idArquivo = response.disco[i].conteudo;
-        }
-      } else {
-        conteudoLinha.innerHTML =
-          response.disco[i] == undefined
-            ? "<i><small>Vazio</small></i>"
-            : response.disco[i];
-        conteudoLinha.idArquivo = response.disco[i];
-        conteudoLinha.style.borderRight =
-          cores[response.disco[i]] + " 10px solid";
-        deletarLinha.dataset.idArquivo = response.disco[i];
+          break;
+
+        case "alocacaoIndexada":
+          if (response.disco[i] != undefined) {
+            if (typeof response.disco[i] == "object") {
+              conteudoLinha.innerHTML = response.disco[i].join();
+              let proximo;
+              for (let j = 0; j < response.quantidadeBloco; j++) {
+                if (response.disco[j] == response.disco[response.disco[i][0]]) {
+                  proximo = j;
+                }
+              }
+              conteudoLinha.idArquivo = response.disco[proximo];
+              conteudoLinha.style.borderRight =
+                cores[response.disco[proximo]] + " 10px solid";
+              deletarLinha.dataset.idArquivo = response.disco[proximo];
+            } else {
+              conteudoLinha.innerHTML =
+                response.disco[i] == undefined
+                  ? "<i><small>Vazio</small></i>"
+                  : response.disco[i];
+              conteudoLinha.idArquivo = response.disco[i];
+              conteudoLinha.style.borderRight =
+                cores[response.disco[i]] + " 10px solid";
+              deletarLinha.dataset.idArquivo = response.disco[i];
+            }
+            break;
+          } else {
+            conteudoLinha.innerHTML = "<i><small>Vazio</small></i>";
+          }
       }
 
       let linha = document.createElement("tr");
@@ -119,7 +164,7 @@ let renderizar = (response) => {
     // apaga mensagens de erro antigas
     $("#caixaDeErro").hide();
   } catch (error) {
-    console.log(error);
+    mostrarErro(error);
   }
 };
 

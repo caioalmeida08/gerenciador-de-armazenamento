@@ -6,9 +6,10 @@ class Memoria {
     // o disco inicialmente é criado vazio, sem nenhum bloco integrado, e posteriormente populado com a funcao popularBlocos()
     // disco físico da memória
     this.disco = new Array();
-
     // armazena em memoria o nome (id) do ultimo arquivo gravado em disco
     this.idArquivo = 0;
+    // armazena o tipo de alocação
+    this.tipoAlocacao = "alocacaoIndexada";
   }
 
   // * Checa o espaco disponivel na memoria
@@ -69,13 +70,8 @@ class Memoria {
     // checa se o arquivo existe na memoria
     let existe = false;
     for (let i = 0; i < this.quantidadeBloco; i++) {
-      if (typeof this.disco[i] != "object") {
-        continue;
-      }
-
-      if (this.disco[i].conteudo == idArquivo) {
+      if (this.disco[i] == idArquivo) {
         existe = true;
-        console.log(existe);
         break;
       }
     }
@@ -87,17 +83,14 @@ class Memoria {
     // itera por todos os blocos da memoria
     for (let i = 0; i < this.quantidadeBloco; i++) {
       // checa se o bloco está alocado pelo método contíguo ou se pelo metodo encadeado/indexado
-      if (typeof this.disco[i] == "object") {
-        // bloco de alocacaoIndexada ou AlocacaoIndexada
-        // checa se o bloco está ocupado pelo arquivo desejado
-        if (this.disco[i].conteudo == idArquivo) {
-          // esvazia o bloco
-          this.disco[i] = undefined;
-          // remove o blocoDeIndice do arquivo
-          if (typeof this.disco[i - 1] == "object") {
-            this.disco[i - 1] = undefined;
-          }
-        }
+      if (
+        typeof this.disco[i] == "object" &&
+        this.disco[this.disco[i][0]] == idArquivo
+      ) {
+        this.disco[i] = undefined;
+      }
+      if (this.disco[i] == idArquivo) {
+        this.disco[i] = undefined;
       }
     }
   }
@@ -124,6 +117,12 @@ const alocacaoIndexada_get = async (req, res) => {
     // checa se a memória já foi criada
     if (memoria == undefined) {
       throw "Memória não iniciada";
+    }
+
+    // checa se é um pedido de atualização da tabela (get)
+    if (req.query.getMemoria) {
+      res.json(memoria);
+      return;
     }
 
     // aloca um novo arquivo

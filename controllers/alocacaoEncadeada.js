@@ -6,9 +6,10 @@ class Memoria {
     // o disco inicialmente é criado vazio, sem nenhum bloco integrado, e posteriormente populado com a funcao popularBlocos()
     // disco físico da memória
     this.disco = new Array();
-
     // armazena em memoria o nome (id) do ultimo arquivo gravado em disco
     this.idArquivo = 0;
+    // armazena o tipo de alocação
+    this.tipoAlocacao = "alocacaoEncadeada";
   }
 
   // * Checa o espaco disponivel na memoria
@@ -139,6 +140,12 @@ const alocacaoEncadeada_get = (req, res) => {
     // checa se a memória já foi criada
     if (memoria == undefined) {
       throw "Memória não iniciada";
+    }
+
+    // checa se é um pedido de atualização da tabela (get)
+    if (req.query.getMemoria) {
+      res.json(memoria);
+      return;
     }
 
     // aloca um novo arquivo
