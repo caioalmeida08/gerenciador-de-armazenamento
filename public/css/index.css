@@ -105,6 +105,12 @@ body,
   background-color: var(--primary-blue);
 }
 
+.input-criar,
+#tipo_alocacao {
+  border: 1px solid #dee2e6;
+  border-radius: 0;
+}
+
 .deletar-button {
   cursor: pointer;
   color: #dc3545;

@@ -219,9 +219,9 @@
                   <table class="table table-hover" id="tabela">
                     <thead>
                       <tr>
-                        <th scope="col">Bloco da memória#️⃣</th>
-                        <th scope="col">Arquivo📁 </th>
-                        <th scope="col">Deletar🗑️</th>
+                        <th class="border-0" scope="col">Bloco da memória#️⃣</th>
+                        <th class="border-0" scope="col">Arquivo📁 </th>
+                        <th class="border-0" scope="col">Deletar🗑️</th>
                       </tr>
                     </thead>
                     <tbody id="tabela-body">
@@ -234,12 +234,11 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-4 bg-light">
+          <div class="col-sm-4" id="controle-tabela">
             <div class="row">
               <div class="col-sm-12">
                 <div class="row justify-content-end">
-                  <label for="tipoAlocacao">Tipo de Alocação:</label>
-                  <select name="tipoAlocacao" id="tipo_alocacao">
+                  <select class="custom-select col-sm-6" name="tipoAlocacao" id="tipo_alocacao">
                     <option value="/alocacaoContigua">Contígua</option>
                     <option value="/alocacaoEncadeada">Encadeada</option>
                     <option value="/alocacaoIndexada">Indexada</option>
@@ -249,47 +248,57 @@
             </div>
             <div class="row p-3">
               <div class="col-sm-12">
-                <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+                <div class="row p-3">
                   <div class="col-sm-12">
                     <div class="row">Criar uma memória:</div>
                     <div class="row">
-                      <div class="col-sm-8">
-                        <div class="row">
-                          <input type="number" class="container" name="tamanho_memoria"
-                            placeholder="Blocos de memória"></input>
-                        </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="row">
-                          <button id="criar_memoria" type="submit" class="btn btn-primary"> Enviar</button>
-                        </div>
-                      </div>
+                      <input type="number" class="input-criar container p-3" name="tamanho_memoria"
+                        placeholder="Blocos de memória"></input>
+                    </div>
+                    <div class="row py-1">
+                      <button id="criar_memoria" type="submit"
+                        class="container p-3 btn btn-success rounded-0">Criar</button>
                     </div>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row p-3">
                   <div class="col-sm-12">
-                    <div class="row">Criar um Arquivo:</div>
+                    <div class="row">Criar um arquivo:</div>
                     <div class="row">
-                      <div class="col-sm-8">
-                        <div class="row">
-                          <input type="number" class="container" name="tamanho_arquivo"
-                            placeholder="Tamanho do arquivo"></input>
-                        </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <div class="row">
-                          <button type="submit" class="btn btn-primary" id="criar_arquivo"> Enviar</button>
-                        </div>
-                      </div>
+                      <input type="number" class="input-criar container p-3" name="tamanho_arquivo"
+                        placeholder="Tamanho do arquivo"></input>
+                    </div>
+                    <div class="row py-1">
+                      <button id="criar_arquivo" type="submit"
+                        class="container p-3 btn btn-success rounded-0">Enviar</button>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="row">
-                      <div class="container my-3 alert alert-danger" id="caixaDeErro">
-                        Erro</div>
+
+
+
+
+
+
+
+
+
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="container my-3 alert alert-danger" id="caixaDeErro">
+                          Erro</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -298,7 +307,6 @@
           </div>
         </div>
       </div>
-    </div>
   </section>
   <!-- ' DEFINIÇÕES ' -->
   <section class="caixa bloco-definicoes" id="bloco-definicoes">
