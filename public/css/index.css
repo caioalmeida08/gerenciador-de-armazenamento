@@ -50,7 +50,6 @@ body,
 }
 
 #home {
-  background: var(--secondary-white);
   color: var(--primary-white);
 }
 
@@ -99,10 +98,10 @@ body,
 
 #container-tabela::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px var(--primary-blue);
-  box-shadow: inset 0 0 6px var(--primary-blue);
-  box-shadow: inset 0 0 6px var(--primary-blue);
-  background-color: var(--primary-blue);
+  -webkit-box-shadow: inset 0 0 6px var(--primary-grey);
+  box-shadow: inset 0 0 6px var(--primary-grey);
+  box-shadow: inset 0 0 6px var(--primary-grey);
+  background-color: var(--primary-grey);
 }
 
 .input-criar,

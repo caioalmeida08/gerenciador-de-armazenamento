@@ -95,8 +95,9 @@
         <div class="col-md-6 d-flex">
           <div class="align-self-center">
             <h2>Alocação Contigua</h2>
-            <p>Usado por mais de 1 milhão de pessoas, o Finans é uma ferramenta online que vai facilitar sua vida
-              financeira.</p>
+            <p>A alocação contígua consiste em armazenar um arquivo em blocos seqüencialmente dispostos, permitindo ao
+              sistema localizar um arquivo através do endereço do primeiro bloco e da sua extensão em blocos. O aceso é
+              feito de maneira simples, tanto para a forma seqüencial quanto para a direta.</p>
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseContigua" role="button"
               aria-expanded="false" aria-controls="collapseExample">
               Veja mais
@@ -107,9 +108,19 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">Sobre</h5>
-                <p class="card-text">Armazena um arquivo de forma sequencial em blocos, assim um arquivo utiliza um
-                  endereço para poder se localizar através do endereõ do primerio bloco.</p>
-                <button type="button" class="btn btn-primary">Simulador</button>
+                <p class="card-text">A alocação contígua consiste em armazenar um arquivo em blocos seqüencialmente
+                  dispostos, permitindo ao sistema localizar um arquivo através do endereço do primeiro bloco e da sua
+                  extensão em blocos. O aceso é feito de maneira simples, tanto para a forma seqüencial quanto para a
+                  direta.
+
+                  Um problema desse tipo de alocação é que quando um arquivo é criado com n blocos, é necessário que
+                  exista uma cadeia de n blocos livres disposto seqüencialmente. Nesse tipo de alocação, o disco é visto
+                  como um grande vetor, com segmentos ocupados e livres.</p>
+                <h5 class="card-title">Desvantagem</h5>
+                <p class="card-text">Um problema na alocação contígua é a fragmentação dos espaços livres causado pela
+                  criação e eliminação constante de arquivos é que com o tempo surgem espaços vagos sem o tamanho
+                  suficiente para se alocar novos arquivos.</p>
+                <button id="sobre_contigua" type="button" class="btn btn-primary">Simulador</button>
 
 
 
@@ -135,7 +146,9 @@
         <div class="col-md-6 d-flex order-2">
           <div class="align-self-center">
             <h2>Alocação Encadeada</h2>
-            <p>Alocação encadeada consiste em manter os arquivos, cada um, como uma lista encadeada de blocos</p>
+            <p>Na alocação encadeada um arquivo pode ser organizado como um conjunto de blocos ligados logicamente no
+              disco, independente da sua localização física, sendo que cada bloco possui um ponteiro para o bloco
+              seguinte do arquivo e assim sucessivamente.</p>
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseEncadeada" role="button"
               aria-expanded="false" aria-controls="collapseExample">
               Veja mais
@@ -146,9 +159,21 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">Sobre</h5>
-                <p class="card-text">Os arquivos são organizados em um conjunto de blocos. A primeira palavra de cada
-                  bloco é usado como ponteiro para o proximo bloco a outra parte do bloco é usada para dados</p>
-                <a href="#" class="btn btn-primary">Simulador</a>
+                <p class="card-text">Na alocação encadeada um arquivo pode ser organizado como um conjunto de blocos
+                  ligados logicamente no disco, independente da sua localização física, sendo que cada bloco possui um
+                  ponteiro para o bloco seguinte do arquivo e assim sucessivamente.</p>
+                <p class="card-text">Neste tipo de alocação, ocorre grande fragmentação dos arquivos devido aos blocos
+                  livres dos arquivos não precisarem ser contíguos, existe a quebra do arquivo em diversos pedaços,
+                  denominados extents. Essa fragmentação aumenta o tempo de acesso aos arquivos, pois exige que o
+                  mecanismo de leitura/gravação se desloque diversas vezes sob sua superfície. Dessa forma se torna
+                  necessário a execução da operação de defragmentação periódicamente</p>
+                <h5 class="card-title">Desvantagem</h5>
+                <p class="card-text">
+                  Um problema na alocação encadeada é que ela só permite o acesso seqüencial aos blocos dos arquivos,
+                  não possuindo acesso direto aos blocos e desperdiça espaço nos blocos com o armazenamento de
+                  ponteiros.
+                </p>
+                <button id="sobre_encadeada" class="btn btn-primary">Simulador</button>
               </div>
             </div>
           </div>
@@ -170,8 +195,9 @@
         <div class="col-md-6 d-flex">
           <div class="align-self-center">
             <h2>Alocação Indexada</h2>
-            <p>Usado por mais de 1 milhão de pessoas, o Finans é uma ferramenta online que vai facilitar sua vida
-              financeira.</p>
+            <p>A alocação indexada soluciona o problema da alocação encadeada referente ao acesso direto aos blocos dos
+              arquivos pois mantém os ponteiros de todos os blocos do arquivo em uma única estrutura denominada bloco de
+              índice.</p>
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseIndexada" role="button"
               aria-expanded="false" aria-controls="collapseExample">
               Veja mais
@@ -182,9 +208,15 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">Sobre</h5>
-                <p class="card-text">Os ponteiros de todos os blocos do arquivo ficam guardados em bloco chamado bloco
-                  de indice</p>
-                <a href="#" class="btn btn-primary">Simulador</a>
+                <p class="card-text">A alocação indexada soluciona o problema da alocação encadeada referente ao acesso
+                  direto aos blocos dos arquivos pois mantém os ponteiros de todos os blocos do arquivo em uma única
+                  estrutura denominada bloco de índice.</p>
+                <h5 class="card-title">Desvantagem</h5>
+                <p class="card-text">
+                  Esse método de alocação utiliza, para cada arquivo, um bloco a mais de memória, chamado índice, que
+                  armazena os endereços de memória de todos os blocos do arquivo gravados em disco.
+                </p>
+                <button id="sobre_indexada" class="btn btn-primary">Simulador</button>
               </div>
             </div>
           </div>
@@ -239,9 +271,9 @@
               <div class="col-sm-12">
                 <div class="row justify-content-end">
                   <select class="custom-select col-sm-6" name="tipoAlocacao" id="tipo_alocacao">
-                    <option value="/alocacaoContigua">Contígua</option>
-                    <option value="/alocacaoEncadeada">Encadeada</option>
-                    <option value="/alocacaoIndexada">Indexada</option>
+                    <option value="/alocacaoContigua" id="select_contigua">Contígua</option>
+                    <option value="/alocacaoEncadeada" id="select_encadeada">Encadeada</option>
+                    <option value="/alocacaoIndexada" id="select_indexada">Indexada</option>
                   </select>
                 </div>
               </div>
