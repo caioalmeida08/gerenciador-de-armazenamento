@@ -1,4 +1,5 @@
 $(() => {
+  var memoria = memoriaContigua;
   // ações a tomar quando um botão de 'simulador', das seções 'sobre', for clicado
   $("#sobre_contigua").on("click", () => {
     $("#tipo_alocacao").val("/alocacaoContigua");
@@ -28,13 +29,13 @@ $(() => {
     );
   });
 
-  $("#tipo_alocacao").on("change", async () => {
+  $("#tipo_alocacao").on("change", () => {
     try {
-      // envia os dados ao back-end e aguarda resposta
-      let response = await enviar({ getMemoria: true });
+      // busca a memoria desejada
+      memoria = mudarMemoria($("#tipo_alocacao").val());
 
       // tenta renderizar a resposta
-      renderizar(response);
+      renderizar(memoria);
     } catch (error) {
       // checa se é um pedido de get com memória não iniciada
       if (error.error.includes("inicializada")) {
@@ -60,61 +61,82 @@ $(() => {
     }
   });
   // Função utilizada para comunicar a criação de uma nova memória
-  $("#criar_memoria").on("click", async (e) => {
+  $("#criar_memoria").on("click", () => {
     // coleta os dados do input
-    let form = {
-      criar: $("input[name='tamanho_memoria']").val(),
-    };
+    let tamanhoMemoria = $("input[name='tamanho_memoria']").val();
 
     try {
-      // envia os dados ao back-end e aguarda resposta
-      let response = await enviar(form);
+      memoria = novaMemoria($("#tipo_alocacao").val(), tamanhoMemoria);
       // tenta renderizar a resposta
-      renderizar(response);
+      renderizar(memoria);
     } catch (error) {
       mostrarErro(error);
     }
   });
   // Função utilizada para comunicar a criação de um novo arquivo
-  $("#criar_arquivo").on("click", async (e) => {
+  $("#criar_arquivo").on("click", () => {
     // coleta os dados do input
-    let form = {
-      tamanhoArquivo: $("input[name='tamanho_arquivo']").val(),
-    };
+    let tamanhoArquivo = $("input[name='tamanho_arquivo']").val();
 
     try {
       // envia os dados ao back-end e aguarda resposta
-      let response = await enviar(form);
+      memoria = mudarMemoria($("#tipo_alocacao").val());
+      memoria.criarArquivo(tamanhoArquivo);
       // tenta renderizar a resposta
-      renderizar(response);
+      renderizar(memoria);
     } catch (error) {
       mostrarErro(error);
     }
   });
 });
 
-let deletar = async (idArquivo) => {
-  // Função utilizada para comunicar a deleção de um arquivo
-  let form = {
-    deletarArquivo: idArquivo,
-  };
-
+// Função utilizada para comunicar a deleção de um arquivo
+let deletar = (idArquivo) => {
   try {
-    // envia os dados ao back-end e aguarda resposta
-    let response = await enviar(form);
+    memoria = mudarMemoria($("#tipo_alocacao").val());
+    memoria.deletarArquivo(idArquivo);
     // tenta renderizar a resposta
-    renderizar(response);
+    renderizar(memoria);
   } catch (error) {
     mostrarErro(error);
   }
 };
 
-// tenta enviar os dados ao back-end
-let enviar = async (form) => {
-  let tipoAlocacao = $("#tipo_alocacao").val();
-  const response = await $.get(tipoAlocacao, form);
-  if (jQuery.isEmptyObject(response) || response.error != undefined) {
-    throw response;
+// tenta mudarMemoria os dados ao back-end
+let mudarMemoria = (tipoMemoria) => {
+  var response;
+  switch (tipoMemoria) {
+    case "memoriaContigua":
+      response = memoriaContigua;
+      break;
+
+    case "memoriaEncadeada":
+      response = memoriaEncadeada;
+      break;
+
+    case "memoriaIndexada":
+      response = memoriaIndexada;
+      break;
+  }
+  return response;
+};
+
+let novaMemoria = (tipoMemoria, tamanhoMemoria) => {
+  switch (tipoMemoria) {
+    case "memoriaContigua":
+      memoriaContigua = new MemoriaContigua(tamanhoMemoria);
+      response = memoriaContigua;
+      break;
+
+    case "memoriaEncadeada":
+      memoriaEncadeada = new MemoriaEncadeada(tamanhoMemoria);
+      response = memoriaEncadeada;
+      break;
+
+    case "memoriaIndexada":
+      memoriaIndexada = new MemoriaIndexada(tamanhoMemoria);
+      response = memoriaIndexada;
+      break;
   }
   return response;
 };
@@ -221,7 +243,8 @@ let renderizar = (response) => {
 let mostrarErro = (erro) => {
   $("#caixaDeErro").show();
   let caixaDeErro = document.getElementById("caixaDeErro");
-  caixaDeErro.innerHTML = erro.error || erro.responseText || "";
+  caixaDeErro.innerHTML = erro.error || erro.responseText || erro;
+  console.log(erro);
 };
 
 let corAleatoria = () => {

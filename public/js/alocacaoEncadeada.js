@@ -1,5 +1,5 @@
 // * Armazena a estrutura da memória física
-class Memoria {
+class MemoriaEncadeada {
   constructor(quantidadeBloco) {
     // quantidade total de blocos presentes na memoria
     this.quantidadeBloco = quantidadeBloco;
@@ -27,7 +27,7 @@ class Memoria {
   }
 
   // * Método responsavel pela alocação encadeada
-  alocacaoEncadeada(tamanhoArquivo) {
+  criarArquivo(tamanhoArquivo) {
     // checa se há espaço suficiente em disco
     if (this.checarEspaco() < tamanhoArquivo) {
       throw "Não foi possível gravar o arquivo";
@@ -81,6 +81,8 @@ class Memoria {
 
     // incrementa o id do arquivo
     this.idArquivo++;
+
+    return this;
   }
 
   // * Método responsável por deletar um arquivo da memoria
@@ -116,61 +118,8 @@ class Memoria {
         }
       }
     }
+    return this;
   }
 }
 
-//' INSTÂNCIA DA MEMORIA
-
-let memoria;
-
-//' FUNÇÕES DO CONTROLLER
-
-const alocacaoEncadeada_get = (req, res) => {
-  try {
-    // checa se há um pedido de criação de nova memória
-    if (req.query.criar) {
-      // checa se a memória tem o espaço mínimo de 1
-      if (req.query.criar < 1) {
-        throw "Espaço mínimo da memória é de 1";
-      }
-      // checa se a memória tem o espaço máximo de 256
-      if (req.query.criar > 256) {
-        throw "Espaço máximo da memória é de 256";
-      }
-      // cria uma nova memória
-      memoria = new Memoria(req.query.criar);
-    }
-
-    // checa se a memória já foi criada
-    if (memoria == undefined) {
-      throw "Memória de alocação encadeada não inicializada";
-    }
-
-    // checa se é um pedido de atualização da tabela (get)
-    if (req.query.getMemoria) {
-      res.json(memoria);
-      return;
-    }
-
-    // aloca um novo arquivo
-    if (req.query.tamanhoArquivo) {
-      memoria.alocacaoEncadeada(req.query.tamanhoArquivo);
-    }
-
-    // deleta um arquivo
-    if (req.query.deletarArquivo) {
-      memoria.deletarArquivo(req.query.deletarArquivo);
-    }
-
-    res.json(memoria);
-  } catch (err) {
-    res.json({
-      error: err,
-    });
-  }
-};
-
-//' LIGAÇÃO COM ROUTER HOME
-module.exports = {
-  alocacaoEncadeada_get,
-};
+var memoriaEncadeada = new MemoriaEncadeada();

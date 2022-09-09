@@ -25,16 +25,10 @@ app.use(express.urlencoded({ extended: true }));
 //' ROUTES
 
 const home_route = require("./routes/home");
-const alocacaoContigua_route = require("./routes/alocacaoContigua");
-const alocacaoEncadeada_route = require("./routes/alocacaoEncadeada");
-const alocacaoIndexada_route = require("./routes/alocacaoIndexada");
 
 //' ROUTING
 
 app.use("/home", home_route);
-app.use("/alocacaoContigua", alocacaoContigua_route);
-app.use("/alocacaoEncadeada", alocacaoEncadeada_route);
-app.use("/alocacaoIndexada", alocacaoIndexada_route);
 app.use("/", home_route);
 
 //' CONEXÃO COM DB E INICIALIZAÇÃO DO SERVIDOR
