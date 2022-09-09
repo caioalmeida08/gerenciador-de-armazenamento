@@ -1,4 +1,33 @@
 $(() => {
+  // ações a tomar quando um botão de 'simulador', das seções 'sobre', for clicado
+  $("#sobre_contigua").on("click", () => {
+    $("#tipo_alocacao").val("/alocacaoContigua");
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: $("#tipo_alocacao").offset().top - 100,
+      },
+      1000
+    );
+  });
+  $("#sobre_encadeada").on("click", () => {
+    $("#tipo_alocacao").val("/alocacaoEncadeada");
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: $("#tipo_alocacao").offset().top - 100,
+      },
+      1000
+    );
+  });
+  $("#sobre_indexada").on("click", () => {
+    $("#tipo_alocacao").val("/alocacaoIndexada");
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: $("#tipo_alocacao").offset().top - 100,
+      },
+      1000
+    );
+  });
+
   $("#tipo_alocacao").on("change", async () => {
     try {
       // envia os dados ao back-end e aguarda resposta
