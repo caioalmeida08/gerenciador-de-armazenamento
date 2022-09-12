@@ -255,6 +255,5 @@ let corAleatoria = () => {
     hexadecimal.push(possibilidades[Math.round(Math.random() * 15)]);
   }
 
-  hexadecimal.unshift("#");
-  return hexadecimal.join("");
+  return rgbToHex(coresRGB.vermelho, coresRGB.verde, coresRGB.azul);
 };
