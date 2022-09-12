@@ -130,25 +130,63 @@ let mostrarErro = (erro) => {
   caixaDeErro.innerHTML = erro.error || erro.responseText || "";
 };
 
+
 let corAleatoria = () => {
   let possibilidades = "0123456789ABCDEF";
   let hexadecimal = new Array();
+  let rgb = new Array();
   let escolha = Math.round(Math.random() * 1);
+  // vermelho = Math.round(Math.random() * 256);
+  // verde = Math.round(Math.random() * 256);
+  // azul = Math.round(Math.random() * 256);
+  let conta;
 
 
 
-  if (escolha === 1) {
-    for (let i = 0; i < 6; i++) {
-      hexadecimal.push(possibilidades[Math.round(Math.random() * 15)]);
+
+  let coresRGB = {
+    vermelho: Math.round(Math.random() * 256),
+    verde: Math.round(Math.random() * 256),
+    azul: Math.round(Math.random() * 256)
+
+
+
+
+  };
+  console.log(coresRGB)
+
+
+  if (coresRGB.vermelho < 230 && coresRGB.verde < 230 && coresRGB.azul < 230) {
+
+
+    if (coresRGB.vermelho < 50 && coresRGB.verde < 50 || coresRGB.azul < 50) {
+
+      rgbToHex(coresRGB.vermelho, coresRGB.verde, coresRGB.azul);
+      console.log("caiu aqui")
+
+
     }
+
   } else {
-    for (let i = 0; i < 6; i++) {
-      hexadecimal.push(possibilidades[Math.round(Math.random() * 15)]);
-    }
-    hexadecimal.splice(0, 3, "F", "F", "F");
+
+    rgbToHex(coresRGB.vermelho, coresRGB.verde, coresRGB.azul);
+    console.log("caiu no else")
+
+
   }
 
-  hexadecimal.unshift("#");
-  return hexadecimal.join("");
+
+  function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+  }
+
+  function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+  }
+
+
+
+  return rgbToHex(coresRGB.vermelho, coresRGB.verde, coresRGB.azul);
 
 };

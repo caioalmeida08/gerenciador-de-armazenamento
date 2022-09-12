@@ -58,32 +58,79 @@
   <!--/fim Cabecalho -->
   <!-- ' SEÇÃO PRINCIPAL ' -->
   <section id="home">
+
+
     <!-- Início seção home -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 d-flex">
-          <!-- Textos da seção -->
-          <div class="align-self-center">
-            <h1 class="display-4" id="display">Simulador Alocação de Arquivos
-            </h1>
-            <p>
-              Simula o modo como as infomações são armazenadas nos dispositivos físicos de armazenamento
-            </p>
-            <p>Disponível para
-              <a href="" class="btn btn-outline-dark">
-                <i class="fab fa-android fa-lg"></i>
-              </a>
-              <a href="" class="btn btn-outline-dark">
-                <i class="fab fa-apple"></i>
-              </a>
-            </p>
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselIndicators" data-slide-to="1"></li>
+
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 d-flex">
+                <!-- Textos da seção -->
+                <div class="align-self-center">
+                  <h1 class="display-4" id="display"> Projeto da Disciplina de Sistema Operacional
+                  </h1>
+                  <p>
+                  <ul class="navbar-nav">
+
+                    <li><a href="#membros"><span class="cor-texto">Membros da Equipe</span></a>
+                    </li>
+
+                  </ul>
+                  </p>
+
+                </div>
+              </div>
+              <div class="col-md-4 d-none d-md-block">
+                <img src="img/ifce-vertical.png" class="mt-4 mb-4" height="400">
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6 d-none d-md-block">
-          <img src="img/gaveta-arquivos.png">
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 d-flex">
+                <!-- Textos da seção -->
+                <div class="align-self-center">
+                  <h1 class="display-4" id="display">Simulador Alocação de Arquivos
+                  </h1>
+                  <p>
+                    Simula o modo como as infomações são armazenadas nos dispositivos físicos de armazenamento
+                  </p>
+                  <p>Disponível para
+                    <a href="" class="btn btn-outline-dark">
+                      <i class="fab fa-android fa-lg"></i>
+                    </a>
+                    <a href="" class="btn btn-outline-dark">
+                      <i class="fab fa-apple"></i>
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6 d-none d-md-block">
+                <img src="img/gaveta-arquivos.png">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Proximo</span>
+      </a>
     </div>
+
   </section>
   <!--/fim seção home -->
 
@@ -109,9 +156,13 @@
                 <h5 class="card-title">Sobre</h5>
                 <p class="card-text">Armazena um arquivo de forma sequencial em blocos, assim um arquivo utiliza um
                   endereço para poder se localizar através do endereõ do primerio bloco.</p>
-                <button type="button" class="btn btn-primary">Simulador</button>
 
-                
+
+                <a href="https://www.gsigma.ufsc.br/~popov/aulas/so1/cap10so.html" class="btn btn-outline-dark">Mais
+                  conteudo no site</a>
+
+
+
 
 
               </div>
@@ -148,7 +199,8 @@
                 <h5 class="card-title">Sobre</h5>
                 <p class="card-text">Os arquivos são organizados em um conjunto de blocos. A primeira palavra de cada
                   bloco é usado como ponteiro para o proximo bloco a outra parte do bloco é usada para dados</p>
-                <a href="#" class="btn btn-primary">Simulador</a>
+                <a href="https://www.gsigma.ufsc.br/~popov/aulas/so1/cap10so.html" class="btn btn-outline-dark">Mais
+                  conteudo no site</a>
               </div>
             </div>
           </div>
@@ -184,7 +236,8 @@
                 <h5 class="card-title">Sobre</h5>
                 <p class="card-text">Os ponteiros de todos os blocos do arquivo ficam guardados em bloco chamado bloco
                   de indice</p>
-                <a href="#" class="btn btn-primary">Simulador</a>
+                <a href="https://www.gsigma.ufsc.br/~popov/aulas/so1/cap10so.html" class="btn btn-outline-dark">Mais
+                  conteudo no site</a>
               </div>
             </div>
           </div>
@@ -208,9 +261,12 @@
 
   <!-- ' GERENCIADOR DE ARQUIVOS ' -->
   <section class="caixa">
+    <hr>
     <div class="row justify-content-center gx-1">
       <div class="col-sm-10">
-        <div class="row">Gerenciador de Arquivos</div>
+        <div class="row">
+          <div class="display-4">Gerenciador de Arquivos</div>
+        </div>
         <div class="row">
           <div class="col-sm-8">
             <div class="row">
@@ -237,7 +293,7 @@
           <div class="col-sm-4 bg-light">
             <div class="row">
               <div class="col-sm-12">
-                <div class="row justify-content-end">
+                <div class="row justify-content-start">
                   <label for="tipoAlocacao">Tipo de Alocação:</label>
                   <select name="tipoAlocacao" id="tipo_alocacao">
                     <option value="/alocacaoContigua">Contígua</option>
@@ -301,7 +357,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        
+
       </div>
     </div>
     <hr>
@@ -339,33 +395,33 @@
     <div class="container" id="sobre">
       <div class="row">
         <div class="col-md-6">
-          <h4>Simuladores</h4>
+          <h4>Sobre</h4>
           <ul class="navbar-nav">
-            <li><a href=""><span class="cor-texto">Alocação Contigua</span></a>
+            <li><a href="#bloco-contigua"><span class="cor-texto">Alocação Contigua</span></a>
             </li>
-            <li><a href=""><span class="cor-texto">Alocação Encadeada</span></a>
+            <li><a href="#bloco-encadeada"><span class="cor-texto">Alocação Encadeada</span></a>
             </li>
-            <li><a href=""><span class="cor-texto">Alocação Indexada</span></a>
+            <li><a href="#bloco-indexada"><span class="cor-texto">Alocação Indexada</span></a>
             </li>
           </ul>
         </div>
         <div class="col-md-6">
-          <h4>Membros da Equipe</h4>
+          <h4 id="membros">Membros da Equipe</h4>
           <ul class="navbar-nav">
-            <li><a href="https://github.com/caioalmeida08" target="_blank"><span class="cor-texto">Caio</span></a><a
-                href="https://github.com/caioalmeida08" target="_blank"><img src="img/git.png" width="20" height="20"
-                  class="img-fluid ml-2"></a>
+            <li><a href="https://github.com/caioalmeida08" target="_blank"><span class="cor-texto">Caio</span><img
+                  src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
             </li>
-            <li><a href="https://github.com/LuanF11" target="_blank" ><span class="cor-texto">Luan</span></a><a href="https://github.com/LuanF11"
-                target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
+            <li><a href="https://github.com/LuanF11" target="_blank"><span class="cor-texto">Luan</span><img
+                  src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
             </li>
-            <li><a href="https://github.com/Danilo259" target="_blank"><span class="cor-texto">Danilo</span> <a href="https://github.com/LuanF11"
-              target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a></a>
+            <li><a href="https://github.com/Danilo259" target="_blank"><span class="cor-texto">Danilo</span><img
+                  src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
             </li>
-            <li><a href="https://github.com/kaykBr" target="_blank"><span class="cor-texto">Kayky</span> <a href="https://github.com/LuanF11"
-                  target="_blank"><img src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a></a>
+            <li><a href="https://github.com/kaykBr" target="_blank"><span class="cor-texto">Kayky</span> <img
+                  src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
             </li>
-            <li><a href=""><span class="cor-texto">Eduardo</span></a>
+            <li><a href="https://github.com/deiz0n" target="_blank"><span class="cor-texto">Eduardo</span> <img
+                  src="img/git.png" width="20" height="20" class="img-fluid ml-2"></a>
             </li>
           </ul>
         </div>
